@@ -32,6 +32,7 @@ namespace Filmoteka.View
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             new AdminView().Show();
+            Close();
         }
     }
 }

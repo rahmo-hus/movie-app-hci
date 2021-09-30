@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Filmoteka.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,12 @@ namespace Filmoteka.View
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
+        }
+
+        private void Movie_BtnClick(object sender, RoutedEventArgs e)
+        {
+            MovieListView movieListView = new MovieListView();
+            movieList.Children.Add(movieListView);
         }
     }
 }

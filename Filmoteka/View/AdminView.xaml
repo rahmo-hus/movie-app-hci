@@ -16,11 +16,6 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="541*"/>
         </Grid.RowDefinitions>
-        <ScrollViewer Grid.Row="1" Grid.Column="1">
-            <StackPanel>
-                <TextBlock Text=""
-            </StackPanel>
-        </ScrollViewer>
         <Grid Grid.ColumnSpan="2" Grid.RowSpan="2">
             <Grid.Background>
                 <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
@@ -30,6 +25,11 @@
             </Grid.Background>
             <Border Height="390" VerticalAlignment="Top" CornerRadius="0 0 180 0" Background="#100E17" MouseDown="Border_MouseDown">
             </Border>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1" Visibility="Visible">
+            <StackPanel x:Name="movieList">
+                
+            </StackPanel>
         </Grid>
         <Grid Grid.Row="1" Visibility="Visible">
             <Grid.Background>
@@ -52,7 +52,7 @@
                            FontFamily="Century Gothic" Foreground="White" FontSize="24"/>
             </Grid>
             <StackPanel Grid.Row="1">
-                <Button Margin="10">
+                <Button Margin="10" Click="Movie_BtnClick">
                     <Grid Width="150">
                         <materialDesign:PackIcon Kind="Movie"/>
                         <TextBlock HorizontalAlignment="Center" Text="MOVIES" FontFamily="Eras ITC"/>
