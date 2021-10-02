@@ -46,5 +46,10 @@ namespace Filmoteka.View
                  new Movie("Just one more", "Alcos", "/Assets/lan-deng-eVqU1HTZL8E-unsplash.jpg")
              };
         }
+
+        private void AddAMovie_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            new AddMovieView().Show();
+        }
     }
 }
