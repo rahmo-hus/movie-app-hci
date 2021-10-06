@@ -3,6 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:syncfusionskin ="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
         xmlns:local="clr-namespace:Filmoteka.View"
         mc:Ignorable="d"
         Title="AddMovieView" Height="450" Width="800">
@@ -11,9 +14,10 @@
             <ColumnDefinition Width="97*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="541*"/>
         </Grid.RowDefinitions>
-        <Grid>
+        <Grid Grid.RowSpan="2">
             <Grid.Background>
                 <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
                     <GradientStop Color="#FFE63070" Offset="1"/>
@@ -22,6 +26,75 @@
             </Grid.Background>
             <Border Height="390" VerticalAlignment="Top" CornerRadius="0 0 180 0" Background="#100E17" MouseDown="Border_MouseDown">
             </Border>
+        </Grid>
+        <Grid Grid.Row="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Add a movie" Foreground="White" FontSize="24"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60*"/>
+                <RowDefinition Height="7*"/>
+            </Grid.RowDefinitions>
+            <ScrollViewer Grid.Row="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="120"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="80"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <TextBox x:Name="txtMovieName" Margin="10" materialDesign:HintAssist.Hint="Name" Foreground="White" Width="250" BorderBrush="white" CaretBrush="#FFD94448" SelectionBrush="#FFD94448"/>
+                            <syncfusion:ComboBoxAdv syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialDarkBlue}" materialDesign:ThemeAssist.Theme="Dark"  x:Name="comboLanguageSelect" DefaultText="Language" Width="230" Margin="10" BorderBrush="White" AllowMultiSelect="False">
+                            </syncfusion:ComboBoxAdv>
+                            <syncfusion:ComboBoxAdv syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialDarkBlue}" materialDesign:ThemeAssist.Theme="Dark"  x:Name="comboCountrySelect" DefaultText="Country" Width="230" Margin="10" BorderBrush="White" AllowMultiSelect="False">
+                            </syncfusion:ComboBoxAdv>
+
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Stretch">
+                            <TextBox x:Name="txtMovieDescription"  materialDesign:HintAssist.Hint="Description" Foreground="White" BorderBrush="White" TextWrapping="Wrap" Width="750" Margin="10" />
+                        </StackPanel>
+                    </Grid>
+                    <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10">
+                        <TextBox materialDesign:HintAssist.Hint="Budget" TextWrapping="Wrap" Width="250" Margin="10" Foreground="White" BorderBrush="White"/>
+                        <syncfusion:ComboBoxAdv syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialDarkBlue}" materialDesign:ThemeAssist.Theme="Dark"  x:Name="comboGenreSelect" DefaultText="Genre" Width="230" Margin="10" BorderBrush="White" AllowMultiSelect="False">
+                        </syncfusion:ComboBoxAdv>
+                        <!--<ComboBox x:Name="comboCastSelect"  materialDesign:HintAssist.Hint="Cast" Foreground="White" Width="230" BorderBrush="White" Margin="10">
+
+                        </ComboBox>-->
+                        <syncfusion:ComboBoxAdv syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialDarkBlue}" materialDesign:ThemeAssist.Theme="Dark"  x:Name="comboBoxAdv" DefaultText="Cast" Width="230" Margin="10" BorderBrush="White" AllowMultiSelect="True">
+                        </syncfusion:ComboBoxAdv>
+
+                    </StackPanel>
+                    <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="10">
+                        <TextBox materialDesign:HintAssist.Hint="Duration" TextWrapping="Wrap" Width="250" Margin="10" Foreground="White" BorderBrush="White"/>
+                        <syncfusion:ComboBoxAdv syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialDarkBlue}" materialDesign:ThemeAssist.Theme="Dark"  x:Name="comboProducerSelect" DefaultText="Producers" Width="230" Margin="10" BorderBrush="White" AllowMultiSelect="True">
+                            <syncfusion:ComboBoxItemAdv Content="Denmark" />
+                            <syncfusion:ComboBoxItemAdv Content="New Zealand" />
+                            <syncfusion:ComboBoxItemAdv Content="Canada" />
+                            <syncfusion:ComboBoxItemAdv Content="Russia" />
+                            <syncfusion:ComboBoxItemAdv Content="Japan" />
+                        </syncfusion:ComboBoxAdv>
+                        <syncfusion:ComboBoxAdv syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialDarkBlue}" materialDesign:ThemeAssist.Theme="Dark"  x:Name="comboDirectorSelect" DefaultText="Directors" Width="230" Margin="10" BorderBrush="White" AllowMultiSelect="True">
+                            <syncfusion:ComboBoxItemAdv Content="Denmark" />
+                            <syncfusion:ComboBoxItemAdv Content="New Zealand" />
+                            <syncfusion:ComboBoxItemAdv Content="Canada" />
+                            <syncfusion:ComboBoxItemAdv Content="Russia" />
+                            <syncfusion:ComboBoxItemAdv Content="Japan" />
+                        </syncfusion:ComboBoxAdv>
+                        
+                    </StackPanel>
+                    <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+                        <Button x:Name="SubmitMovie" Content="Save movie" Foreground="White"/>
+                    </StackPanel>
+                </Grid>
+            </ScrollViewer>
         </Grid>
     </Grid>
 </Window>
