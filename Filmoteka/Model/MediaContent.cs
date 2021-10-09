@@ -17,9 +17,9 @@ namespace Filmoteka.Model
 
         public string Description { get; set; }
 
-        public string Language { get; set; }
+        public Language Language { get; set; }
 
-        public string OriginCountry { get; set; }
+        public Country OriginCountry { get; set; }
 
         public string FilmingDates { get; set; }
 
@@ -39,31 +39,30 @@ namespace Filmoteka.Model
 
         public List<Review> Reviews { get; set; }
 
-        public MediaContent(int iD, string name, string parentalGuidance, int popularity, string description, string language, string originCountry, string filmingDates, float budget, int numberOfWeeksRunning)
+        public MediaContent(int iD, string name, string description, Language language, Country originCountry, float budget, List<Genre> genres, List<Star> stars, List<Producer> producers, List<Review> reviews)
         {
             ID = iD;
             Name = name;
-            ParentalGuidance = parentalGuidance;
-            Popularity = popularity;
             Description = description;
             Language = language;
             OriginCountry = originCountry;
-            FilmingDates = filmingDates;
             Budget = budget;
-            NumberOfWeeksRunning = numberOfWeeksRunning;
+            Genres = genres;
+            Stars = stars;
+            Producers = producers;
+            Reviews = reviews;
         }
 
-        public MediaContent(string name, string parentalGuidance, int popularity, string description, string language, string originCountry, string filmingDates, float budget, int numberOfWeeksRunning)
+        public MediaContent(string name, string description, Language language, Country originCountry, float budget, List<Genre> genres, List<Star> stars, List<Producer> producers)
         {
             Name = name;
-            ParentalGuidance = parentalGuidance;
-            Popularity = popularity;
             Description = description;
             Language = language;
             OriginCountry = originCountry;
-            FilmingDates = filmingDates;
             Budget = budget;
-            NumberOfWeeksRunning = numberOfWeeksRunning;
+            Genres = genres;
+            Stars = stars;
+            Producers = producers;
         }
 
         public MediaContent()

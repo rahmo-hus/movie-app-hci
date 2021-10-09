@@ -11,15 +11,12 @@ namespace Filmoteka.Model
         public int ID { get; set; }
         public string CategoryName { get; set; }
 
-        public List<Movie> Movies { get; set; }
-
-        public Genre (int id, string categoryName, List<Movie> movies)
+        public Genre (int id, string categoryName)
         {
             ID = id;
             CategoryName = categoryName;
-            Movies = movies;
         }
 
-
+        public override string ToString() => CategoryName;
     }
 }

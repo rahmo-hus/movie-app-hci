@@ -18,5 +18,11 @@ namespace Filmoteka.Model
             ProductionHouses = productionHouses;
             MediaContents = mediaContents;
         }
+        public Producer(int id, string firstName, string lastName, string gender, string dateOfBirth, string birthPlace, string bio, string nickname) :
+        base(id, firstName, lastName, gender, dateOfBirth, birthPlace, bio, nickname)
+        { }
+
+        public override string ToString() => FirstName + " " + LastName;
+
     }
 }

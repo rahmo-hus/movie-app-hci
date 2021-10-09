@@ -6,19 +6,23 @@ using System.Threading.Tasks;
 
 namespace Filmoteka.Model
 {
-    public class Movie
+    public class Movie: MediaContent
     {
-        public string Name { get; set; }
-        
-        public string Cast { get; set; }
+        public int Duration { get; set; }
 
-        public string Image { get; set; }
+        public Movie() { }
 
-        public Movie(string Name, string Cast, string Image)
+        public Movie(int iD, string name, string description, Language language, Country originCountry, float budget, List<Genre> genres, List<Star> stars, List<Producer> producers, List<Review> reviews, int duration)
+            : base(iD, name, description, language, originCountry, budget, genres, stars, producers, reviews)
         {
-            this.Name = Name;
-            this.Cast = Cast;
-            this.Image = Image;
+            Duration = duration;
         }
+
+        public Movie(string name, string description, Language language, Country originCountry, float budget, List<Genre> genres, List<Star> stars, List<Producer> producers, int duration)
+            :base(name, description, language, originCountry, budget, genres, stars,producers)
+        {
+            Duration = duration;
+        }
+
     }
 }

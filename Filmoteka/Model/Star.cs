@@ -13,6 +13,8 @@ namespace Filmoteka.Model
         {
 
         }
-        
+
+        public override string ToString() => FirstName + " " + LastName;
+
     }
 }
