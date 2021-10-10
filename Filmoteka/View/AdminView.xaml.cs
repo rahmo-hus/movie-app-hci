@@ -33,6 +33,8 @@ namespace Filmoteka.View
         private void Movie_BtnClick(object sender, RoutedEventArgs e)
         {
             MovieListView movieListView = new MovieListView();
+            if (movieList.Children.Count != 0)
+                movieList.Children.Clear();
             movieList.Children.Add(movieListView);
         }
     }

@@ -22,7 +22,10 @@ namespace Filmoteka.Model
         base(id, firstName, lastName, gender, dateOfBirth, birthPlace, bio, nickname)
         { }
 
+
         public override string ToString() => FirstName + " " + LastName;
+
+        public override bool Equals(object obj) => ((Producer)obj).ID == ID;
 
     }
 }

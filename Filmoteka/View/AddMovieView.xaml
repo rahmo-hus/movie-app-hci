@@ -28,9 +28,9 @@
             </Border>
         </Grid>
         <Grid Grid.Row="0">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="Add a movie" Foreground="White" FontSize="24"/>
-            </StackPanel>
+            <DockPanel x:Name="headingDockPanel" HorizontalAlignment="Center" VerticalAlignment="Center" LastChildFill="False">
+                <TextBlock Margin="10" VerticalAlignment="Center" x:Name="heading"  Text="Add a movie" Foreground="White" FontSize="24"/>
+            </DockPanel>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
@@ -62,36 +62,25 @@
                         </StackPanel>
                     </Grid>
                     <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10">
-                        <TextBox materialDesign:HintAssist.Hint="Budget" TextWrapping="Wrap" Width="250" Margin="10" Foreground="White" BorderBrush="White"/>
-                        <syncfusion:ComboBoxAdv syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialDarkBlue}" materialDesign:ThemeAssist.Theme="Dark"  x:Name="comboGenreSelect" DefaultText="Genre" Width="230" Margin="10" BorderBrush="White" AllowMultiSelect="False">
+                        <TextBox materialDesign:HintAssist.Hint="Budget" x:Name="txtBudget" TextWrapping="Wrap" Width="250" Margin="10" Foreground="White" BorderBrush="White"/>
+                        <syncfusion:ComboBoxAdv syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialDarkBlue}" materialDesign:ThemeAssist.Theme="Dark"  x:Name="comboGenreSelect" DefaultText="Genre" Width="230" Margin="10" BorderBrush="White" AllowMultiSelect="True">
                         </syncfusion:ComboBoxAdv>
                         <!--<ComboBox x:Name="comboCastSelect"  materialDesign:HintAssist.Hint="Cast" Foreground="White" Width="230" BorderBrush="White" Margin="10">
 
                         </ComboBox>-->
-                        <syncfusion:ComboBoxAdv syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialDarkBlue}" materialDesign:ThemeAssist.Theme="Dark"  x:Name="comboBoxAdv" DefaultText="Cast" Width="230" Margin="10" BorderBrush="White" AllowMultiSelect="True">
+                        <syncfusion:ComboBoxAdv syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialDarkBlue}" materialDesign:ThemeAssist.Theme="Dark"  x:Name="comboCastSelect" DefaultText="Cast" Width="230" Margin="10" BorderBrush="White" AllowMultiSelect="True">
                         </syncfusion:ComboBoxAdv>
 
                     </StackPanel>
                     <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="10">
-                        <TextBox materialDesign:HintAssist.Hint="Duration" TextWrapping="Wrap" Width="250" Margin="10" Foreground="White" BorderBrush="White"/>
-                        <syncfusion:ComboBoxAdv syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialDarkBlue}" materialDesign:ThemeAssist.Theme="Dark"  x:Name="comboProducerSelect" DefaultText="Producers" Width="230" Margin="10" BorderBrush="White" AllowMultiSelect="True">
-                            <syncfusion:ComboBoxItemAdv Content="Denmark" />
-                            <syncfusion:ComboBoxItemAdv Content="New Zealand" />
-                            <syncfusion:ComboBoxItemAdv Content="Canada" />
-                            <syncfusion:ComboBoxItemAdv Content="Russia" />
-                            <syncfusion:ComboBoxItemAdv Content="Japan" />
-                        </syncfusion:ComboBoxAdv>
-                        <syncfusion:ComboBoxAdv syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialDarkBlue}" materialDesign:ThemeAssist.Theme="Dark"  x:Name="comboDirectorSelect" DefaultText="Directors" Width="230" Margin="10" BorderBrush="White" AllowMultiSelect="True">
-                            <syncfusion:ComboBoxItemAdv Content="Denmark" />
-                            <syncfusion:ComboBoxItemAdv Content="New Zealand" />
-                            <syncfusion:ComboBoxItemAdv Content="Canada" />
-                            <syncfusion:ComboBoxItemAdv Content="Russia" />
-                            <syncfusion:ComboBoxItemAdv Content="Japan" />
-                        </syncfusion:ComboBoxAdv>
-                        
+                        <TextBox materialDesign:HintAssist.Hint="Duration" x:Name="txtDuration" TextWrapping="Wrap" Width="250" Margin="10" Foreground="White" BorderBrush="White"/>
+                        <syncfusion:ComboBoxAdv syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialDarkBlue}" materialDesign:ThemeAssist.Theme="Dark"  x:Name="comboProducerSelect" DefaultText="Producers" Width="230" Margin="10" BorderBrush="White" AllowMultiSelect="True"></syncfusion:ComboBoxAdv>
+                        <!--<syncfusion:ComboBoxAdv syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialDarkBlue}" materialDesign:ThemeAssist.Theme="Dark"  x:Name="comboDirectorSelect" DefaultText="Directors" Width="230" Margin="10" BorderBrush="White" AllowMultiSelect="True">-->
+                        <Button x:Name="openFileDialog" Click="Btn_OpenFileDialog" Content="Select image" Width="230" />
+
                     </StackPanel>
                     <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
-                        <Button x:Name="SubmitMovie" Content="Save movie" Foreground="White"/>
+                        <Button x:Name="SubmitMovie" Content="Save movie" Foreground="White" Click="SaveMovie"/>
                     </StackPanel>
                 </Grid>
             </ScrollViewer>

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Filmoteka.Repository
 {
-    class ItemExtractor
+    class DBUtil
     {
         public static readonly string connectionString = "Server=127.0.0.1;Database=mydb;Uid=root;Password=password;";
 
@@ -21,6 +21,17 @@ namespace Filmoteka.Repository
             table.Load(command.ExecuteReader());
             mySqlConnection.Close();
             return table;
+        }
+
+        public static int ExecuteCommand(string sqlCommand)
+        {
+            int numberOfRowsAffected;
+            using MySqlConnection mySqlConnection = new(connectionString);
+            MySqlCommand command = new(sqlCommand, mySqlConnection);
+            mySqlConnection.Open();
+            numberOfRowsAffected = command.ExecuteNonQuery();
+            mySqlConnection.Close();
+            return numberOfRowsAffected;
         }
     }
 }

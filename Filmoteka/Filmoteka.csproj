@@ -20,6 +20,10 @@
 
   <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.2.1" />
+    <PackageReference Include="MySql.Data" Version="8.0.26" />
+    <PackageReference Include="Syncfusion.Shared.WPF" Version="19.3.0.43" />
+    <PackageReference Include="Syncfusion.Themes.MaterialDarkBlue.WPF" Version="19.3.0.44" />
+    <PackageReference Include="Syncfusion.Themes.MaterialLightBlue.WPF" Version="19.3.0.44" />
   </ItemGroup>
 
   <ItemGroup>

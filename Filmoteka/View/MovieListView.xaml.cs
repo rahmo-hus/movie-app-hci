@@ -1,4 +1,5 @@
 ﻿using Filmoteka.Model;
+using Filmoteka.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,32 +25,22 @@ namespace Filmoteka.View
         public MovieListView()
         {
             InitializeComponent();
-            var movies = GetMovies();
+            var movies = MovieDAO.GetAllMovies();
             if (movies.Count > 0)
             {
                 ListViewMovies.ItemsSource = movies;
             }
         }
 
-        private List<Movie> GetMovies()
-        {
-            return new List<Movie>()
-             {
-                 new Movie("Contra tiempo", "Someone", "/Assets/gr-stocks-q8P8YoR6erg-unsplash.jpg"),
-                 new Movie("Some other movie", "Some else", "/Assets/jake-hills-23LET4Hxj_U-unsplash.jpg"),
-                 new Movie("Just one more", "Alcos", "/Assets/lan-deng-eVqU1HTZL8E-unsplash.jpg"),
-                 new Movie("Contra tiempo", "Someone", "/Assets/gr-stocks-q8P8YoR6erg-unsplash.jpg"),
-                 new Movie("Some other movie", "Some else", "/Assets/jake-hills-23LET4Hxj_U-unsplash.jpg"),
-                 new Movie("Just one more", "Alcos", "/Assets/lan-deng-eVqU1HTZL8E-unsplash.jpg"),
-                 new Movie("Contra tiempo", "Someone", "/Assets/gr-stocks-q8P8YoR6erg-unsplash.jpg"),
-                 new Movie("Some other movie", "Some else", "/Assets/jake-hills-23LET4Hxj_U-unsplash.jpg"),
-                 new Movie("Just one more", "Alcos", "/Assets/lan-deng-eVqU1HTZL8E-unsplash.jpg")
-             };
-        }
 
         private void AddAMovie_Btn_Click(object sender, RoutedEventArgs e)
         {
             new AddMovieView().Show();
+        }
+
+        private void MovieClicked(object sender, MouseButtonEventArgs e)
+        {
+            new AddMovieView((Movie)(((StackPanel)sender).DataContext)).Show();
         }
     }
 }

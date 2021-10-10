@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Filmoteka", "Filmoteka\Filmoteka.csproj", "{86771516-17EF-4439-8A17-A3A8B5E8E6AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Filmoteka", "Filmoteka\Filmoteka.csproj", "{86771516-17EF-4439-8A17-A3A8B5E8E6AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -23,5 +23,7 @@ namespace Filmoteka.Model
             ID = iD;
             Name = name;
         }
+
+        public override bool Equals(object obj) => ((Country)obj).ID == ID;
     }
 }

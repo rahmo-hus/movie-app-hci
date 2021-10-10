@@ -18,5 +18,7 @@ namespace Filmoteka.Model
         }
 
         public override string ToString() => CategoryName;
+
+        public override bool Equals(object obj) => ((Genre)obj).ID == ID;
     }
 }

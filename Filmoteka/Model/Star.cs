@@ -16,5 +16,7 @@ namespace Filmoteka.Model
 
         public override string ToString() => FirstName + " " + LastName;
 
+        public override bool Equals(object obj) => ((Star)obj).ID == ID;
+
     }
 }

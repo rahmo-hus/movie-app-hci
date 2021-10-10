@@ -21,6 +21,6 @@ namespace Filmoteka.Model
             Name = name;
         }
 
-
+        public override bool Equals(object obj) => ((Language)obj).ID == ID;
     }
 }

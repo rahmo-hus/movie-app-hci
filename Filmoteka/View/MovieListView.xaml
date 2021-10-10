@@ -27,7 +27,7 @@
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Border Width="110" Height="160">
-                                        <StackPanel>
+                                        <StackPanel MouseDown="MovieClicked">
                                             <StackPanel.Effect>
                                                 <DropShadowEffect BlurRadius="1" RenderingBias="Quality"/>
                                             </StackPanel.Effect>
@@ -37,7 +37,7 @@
                                                 </Border.Background>
                                             </Border>
                                             <TextBlock Margin="5" Text="{Binding Name, StringFormat={}{0:C}}" FontSize="16" Foreground="White" FontFamily="Trebuchet MS"></TextBlock>
-                                            <TextBlock Margin="5 0" Text="{Binding Cast}" Foreground="White" FontSize="13" FontFamily="Bodoni MT Poster Compressed"/>
+                                            <TextBlock Margin="5 0" Text="{Binding Stars}" Foreground="White" FontSize="13" FontFamily="Bodoni MT Poster Compressed"/>
                                         </StackPanel>
                                     </Border>
                                 </DataTemplate>

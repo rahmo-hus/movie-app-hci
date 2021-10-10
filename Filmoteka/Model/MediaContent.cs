@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace Filmoteka.Model
 {
@@ -27,7 +28,7 @@ namespace Filmoteka.Model
 
         public int NumberOfWeeksRunning { get; set; }
 
-        public byte[] Image { get; set; }
+        public BitmapImage Image { get; set; }
 
         public List<Genre> Genres { get; set; }
 
