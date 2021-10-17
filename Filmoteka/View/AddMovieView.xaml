@@ -24,7 +24,7 @@
                     <GradientStop Color="#FFFE8704" Offset="0"/>
                 </LinearGradientBrush>
             </Grid.Background>
-            <Border Height="390" VerticalAlignment="Top" CornerRadius="0 0 180 0" Background="#100E17" MouseDown="Border_MouseDown">
+            <Border VerticalAlignment="Top" x:Name="border"  Height="390" CornerRadius="0 0 180 0" Background="#100E17" MouseDown="Border_MouseDown">
             </Border>
         </Grid>
         <Grid Grid.Row="0">
@@ -40,6 +40,7 @@
             <ScrollViewer Grid.Row="0">
                 <Grid>
                     <Grid.RowDefinitions>
+                        <RowDefinition MaxHeight="300" Height="150*"/>
                         <RowDefinition Height="80"/>
                         <RowDefinition Height="120"/>
                         <RowDefinition Height="80"/>
@@ -47,22 +48,26 @@
                         <RowDefinition Height="80"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
-                        <StackPanel Orientation="Horizontal" Margin="10">
-                            <TextBox x:Name="txtMovieName" Margin="10" materialDesign:HintAssist.Hint="Name" Foreground="White" Width="250" BorderBrush="white" CaretBrush="#FFD94448" SelectionBrush="#FFD94448"/>
-                            <syncfusion:ComboBoxAdv syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialDarkBlue}" materialDesign:ThemeAssist.Theme="Dark"  x:Name="comboLanguageSelect" DefaultText="Language" Width="230" Margin="10" BorderBrush="White" AllowMultiSelect="False">
-                            </syncfusion:ComboBoxAdv>
+                        <DockPanel Grid.Row="0" x:Name="imagePanel" VerticalAlignment="Center">
+                            <Image Source="../Assets/no-photo.png"  Opacity="0.65" Stretch="Uniform" MinHeight="100" MaxHeight="230"/>
+                        </DockPanel>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                            <TextBox  x:Name="txtMovieName" Margin="10" materialDesign:HintAssist.Hint="Name" Foreground="White" Width="230" BorderBrush="AliceBlue" CaretBrush="#FFD94448" SelectionBrush="#FFD94448"/>
+                            <Button x:Name="openFileDialog" Click="Btn_OpenFileDialog" Margin="10" Content="Select image" Width="230" />
                             <syncfusion:ComboBoxAdv syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialDarkBlue}" materialDesign:ThemeAssist.Theme="Dark"  x:Name="comboCountrySelect" DefaultText="Country" Width="230" Margin="10" BorderBrush="White" AllowMultiSelect="False">
                             </syncfusion:ComboBoxAdv>
 
                         </StackPanel>
                     </Grid>
-                    <Grid Grid.Row="1">
-                        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Stretch">
-                            <TextBox x:Name="txtMovieDescription"  materialDesign:HintAssist.Hint="Description" Foreground="White" BorderBrush="White" TextWrapping="Wrap" Width="750" Margin="10" />
+                    <Grid Grid.Row="2">
+                        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+                            <TextBox x:Name="txtMovieDescription"  materialDesign:HintAssist.Hint="Description" Foreground="White" BorderBrush="White" TextWrapping="Wrap" Width="730" Margin="10" />
                         </StackPanel>
                     </Grid>
-                    <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10">
-                        <TextBox materialDesign:HintAssist.Hint="Budget" x:Name="txtBudget" TextWrapping="Wrap" Width="250" Margin="10" Foreground="White" BorderBrush="White"/>
+                    <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+                        <TextBox materialDesign:HintAssist.Hint="Budget" x:Name="txtBudget" TextWrapping="Wrap" Width="230" Margin="10" Foreground="White" BorderBrush="White"/>
                         <syncfusion:ComboBoxAdv syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialDarkBlue}" materialDesign:ThemeAssist.Theme="Dark"  x:Name="comboGenreSelect" DefaultText="Genre" Width="230" Margin="10" BorderBrush="White" AllowMultiSelect="True">
                         </syncfusion:ComboBoxAdv>
                         <!--<ComboBox x:Name="comboCastSelect"  materialDesign:HintAssist.Hint="Cast" Foreground="White" Width="230" BorderBrush="White" Margin="10">
@@ -72,15 +77,16 @@
                         </syncfusion:ComboBoxAdv>
 
                     </StackPanel>
-                    <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="10">
-                        <TextBox materialDesign:HintAssist.Hint="Duration" x:Name="txtDuration" TextWrapping="Wrap" Width="250" Margin="10" Foreground="White" BorderBrush="White"/>
+                    <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+                        <TextBox materialDesign:HintAssist.Hint="Duration" x:Name="txtDuration" TextWrapping="Wrap" Width="230" Margin="10" Foreground="White" BorderBrush="White"/>
                         <syncfusion:ComboBoxAdv syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialDarkBlue}" materialDesign:ThemeAssist.Theme="Dark"  x:Name="comboProducerSelect" DefaultText="Producers" Width="230" Margin="10" BorderBrush="White" AllowMultiSelect="True"></syncfusion:ComboBoxAdv>
                         <!--<syncfusion:ComboBoxAdv syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialDarkBlue}" materialDesign:ThemeAssist.Theme="Dark"  x:Name="comboDirectorSelect" DefaultText="Directors" Width="230" Margin="10" BorderBrush="White" AllowMultiSelect="True">-->
-                        <Button x:Name="openFileDialog" Click="Btn_OpenFileDialog" Content="Select image" Width="230" />
+                        <syncfusion:ComboBoxAdv syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialDarkBlue}" materialDesign:ThemeAssist.Theme="Dark"  x:Name="comboLanguageSelect" DefaultText="Language" Width="230" Margin="10" BorderBrush="White" AllowMultiSelect="False">
+                        </syncfusion:ComboBoxAdv>
 
                     </StackPanel>
-                    <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
-                        <Button x:Name="SubmitMovie" Content="Save movie" Foreground="White" Click="SaveMovie"/>
+                    <StackPanel Grid.Row="5" x:Name="buttonPanel" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+                        <Button x:Name="SubmitMovie" Width="120" Content="Save movie" Foreground="White" Click="SaveMovie"/>
                     </StackPanel>
                 </Grid>
             </ScrollViewer>

@@ -22,12 +22,12 @@
                     <GradientStop Color="#FFFE8704" Offset="0"/>
                 </LinearGradientBrush>
             </Grid.Background>
-            <Border Height="390" VerticalAlignment="Top" CornerRadius="0 0 180 0" Background="#100E17" MouseDown="Border_MouseDown">
+            <Border Height="390" x:Name="border" VerticalAlignment="Top" CornerRadius="0 0 180 0" Background="#100E17" MouseDown="Border_MouseDown">
             </Border>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1" Visibility="Visible">
-            <StackPanel x:Name="movieList">
-                
+            <StackPanel x:Name="itemList">
+
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1" Visibility="Visible">
@@ -50,32 +50,26 @@
                 <TextBlock Text="DASHBOARD" HorizontalAlignment="Center" VerticalAlignment="Center"
                            FontFamily="Century Gothic" Foreground="White" FontSize="24"/>
             </Grid>
-            <StackPanel Grid.Row="1">
-                <Button Margin="10" Click="Movie_BtnClick">
+            <StackPanel Grid.Row="1" Orientation="Vertical">
+                <Button Margin="10" Click="Movie_ListViewClick">
                     <Grid Width="150">
                         <materialDesign:PackIcon Kind="Movie"/>
                         <TextBlock HorizontalAlignment="Center" Text="MOVIES" FontFamily="Eras ITC"/>
                     </Grid>
                 </Button>
-                <Button Margin="10 5 10 10">
-                    <Grid Width="150">
-                        <materialDesign:PackIcon Kind="Show"/>
-                        <TextBlock HorizontalAlignment="Center" Text="SERIES" FontFamily="Eras ITC"/>
-                    </Grid>
-                </Button>
-                <Button Margin="10 5 10 10">
+                <Button Margin="10 5 10 10" Click="Movie_CastClick">
                     <Grid Width="150">
                         <materialDesign:PackIcon Kind="PeopleGroup"/>
                         <TextBlock HorizontalAlignment="Center" Text="CAST" FontFamily="Eras ITC"/>
                     </Grid>
                 </Button>
-                <Button Margin="10 5 10 10">
+                <!--<Button Margin="10 5 10 10">
                     <Grid Width="150">
                         <materialDesign:PackIcon Kind="PeopleGroup"/>
                         <TextBlock HorizontalAlignment="Center" Text="DIRECTOR" FontFamily="Eras ITC"/>
                     </Grid>
-                </Button>
-                <Button Margin="10 5 10 10">
+                </Button>-->
+                <Button Margin="10 5 10 10" Click="Movie_ProducersClick">
                     <Grid Width="150">
                         <materialDesign:PackIcon Kind="PeopleGroup"/>
                         <TextBlock HorizontalAlignment="Center" Text="PRODUCERS" FontFamily="Eras ITC"/>

@@ -5,12 +5,13 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace Filmoteka.Repository
 {
     class DBUtil
     {
-        public static readonly string connectionString = "Server=127.0.0.1;Database=mydb;Uid=root;Password=password;";
+        public static readonly string connectionString = ConfigurationManager.AppSettings["connectionString"];
 
         public static DataTable ExecuteExtraction(string sqlCommand)
         {

@@ -1,6 +1,7 @@
 ﻿using Filmoteka.Model;
 using Filmoteka.Repository;
 using Microsoft.Win32;
+using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,7 +25,7 @@ namespace Filmoteka.View
     /// </summary>
     public partial class AddMovieView : Window
     {
-        BitmapImage movieImage;
+        BitmapImage MovieImage;
         private readonly int ID;
         public AddMovieView()
         {
@@ -40,6 +41,8 @@ namespace Filmoteka.View
             genres.ForEach(genre => comboGenreSelect.Items.Add(genre));
             stars.ForEach(star => comboCastSelect.Items.Add(star));
             producers.ForEach(producer => comboProducerSelect.Items.Add(producer));
+            
+            SizeChanged += OnWindowSizeChanged;
         }
 
         public AddMovieView(Movie movie) : this()
@@ -56,14 +59,29 @@ namespace Filmoteka.View
             txtDuration.Text = movie.Duration + "";
             heading.Text = "Edit a movie";
             SubmitMovie.Content = "Update movie";
+            MovieImage = movie.Image;
+
+            if (MovieImage != null)
+            {
+                imagePanel.Children.Clear();
+                Image image = new();
+                image.Source = MovieImage;
+                image.Height = 230;
+                imagePanel.Children.Add(image);
+            }
 
             Button button = new();
-            button.Content = "Delete";
+            button.Margin = new Thickness(490, 0, 0, 0);
+            button.Width = 120;
+            button.Content = "Delete movie";
             button.Click += new RoutedEventHandler(Btn_DeleteMovie);
 
-            headingDockPanel.Children.Add(button);
+            buttonPanel.Children.Add(button);
         }
-
+        protected void OnWindowSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            border.Height = e.NewSize.Height*0.87;
+        }
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
@@ -71,15 +89,21 @@ namespace Filmoteka.View
 
         private void Btn_DeleteMovie(object sender, RoutedEventArgs e)
         {
-            if (MovieDAO.Delete(ID)) {
-                MessageBox.Show("Successful deletion", "Info window", MessageBoxButton.OK);
-                Close();
-            }
-            else
+            MessageBoxResult messageBox = MessageBox.Show("Are you sure you want to delete movie?", "Warning", MessageBoxButton.YesNo);
+            switch (messageBox)
             {
-                MessageBox.Show("Unable to delete", "Error", MessageBoxButton.OK);
-            }
-            
+                case MessageBoxResult.Yes:
+                    if (MovieDAO.Delete(ID))
+                    {
+                        MessageBox.Show("Successful deletion", "Info window", MessageBoxButton.OK);
+                        Close();
+                    }
+                    else MessageBox.Show("Unable to delete", "Error", MessageBoxButton.OK);
+                    break;
+                default:
+                    break;
+
+            }  
         }
         private void SaveMovie(object sender, RoutedEventArgs e)
         {
@@ -96,30 +120,45 @@ namespace Filmoteka.View
             foreach (var item in comboProducerSelect.SelectedItems)
                 producers.Add((Producer)item);
 
-            Movie movie = new Movie(txtMovieName.Text, txtMovieDescription.Text, (Language)comboLanguageSelect.SelectedItem,
-                (Country)comboCountrySelect.SelectedItem, float.Parse(txtBudget.Text), genres, stars, producers, Int32.Parse(txtDuration.Text));
+            Movie movie = new(txtMovieName.Text, txtMovieDescription.Text, (Language)comboLanguageSelect.SelectedItem,
+                (Country)comboCountrySelect.SelectedItem, float.Parse(txtBudget.Text), genres, stars, producers, int.Parse(txtDuration.Text));
 
-            if(movieImage != null) movie.Image = movieImage;
+            if(MovieImage != null) movie.Image = MovieImage;
 
             if (SubmitMovie.Content.ToString().Contains("Update"))
             {
                 movie.ID = ID;
-                MovieDAO.Update(movie);
+                if (MovieDAO.Update(movie)!= null)
+                    MessageBox.Show("Update successful", "Info", MessageBoxButton.OK);
+                else MessageBox.Show("Update failed", "Info", MessageBoxButton.OK);
             }
             else
-                MovieDAO.Save(movie);
+            {
+                if (MovieDAO.Save(movie) != null)
+                    MessageBox.Show("Movie saved successfuly", "Info", MessageBoxButton.OK);
+                else MessageBox.Show("Could not add a movie", "Info", MessageBoxButton.OK);
+            }
         }
 
         private void Btn_OpenFileDialog(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog op = new OpenFileDialog();
-            op.Title = "Select a picture";
-            op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+            OpenFileDialog op = new OpenFileDialog
+            {
+                Title = "Select a picture",
+                Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
               "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-              "Portable Network Graphic (*.png)|*.png";
+              "Portable Network Graphic (*.png)|*.png"
+            };
             if (op.ShowDialog() == true)
             {
-                movieImage = new BitmapImage(new Uri(op.FileName));
+                MovieImage = new BitmapImage(new Uri(op.FileName));
+
+                imagePanel.Children.Clear();
+                Image image = new();
+                image.Source = MovieImage;
+                image.Height = 230;
+
+                imagePanel.Children.Add(image);
             }
         }
     }

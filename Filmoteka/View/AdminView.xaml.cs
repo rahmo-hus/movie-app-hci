@@ -23,19 +23,41 @@ namespace Filmoteka.View
         public AdminView()
         {
             InitializeComponent();
+            SizeChanged += OnWindowSizeChanged;
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
         }
-
-        private void Movie_BtnClick(object sender, RoutedEventArgs e)
+        protected void OnWindowSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            MovieListView movieListView = new MovieListView();
-            if (movieList.Children.Count != 0)
-                movieList.Children.Clear();
-            movieList.Children.Add(movieListView);
+            border.Height = e.NewSize.Height * 0.87;
+        }
+
+        private void Movie_ListViewClick(object sender, RoutedEventArgs e)
+        {
+            MovieListView movieListView = new();
+            if (itemList.Children.Count != 0)
+                itemList.Children.Clear();
+            itemList.Children.Add(movieListView);
+        }
+
+
+        private void Movie_CastClick(object sender, RoutedEventArgs e)
+        {
+            CastView castView = new();
+            if (itemList.Children.Count != 0)
+                itemList.Children.Clear();
+            itemList.Children.Add(castView);
+        }
+
+        private void Movie_ProducersClick(object sender, RoutedEventArgs e)
+        {
+            ProducersView producersView = new();
+            if (itemList.Children.Count != 0)
+                itemList.Children.Clear();
+            itemList.Children.Add(producersView);
         }
     }
 }

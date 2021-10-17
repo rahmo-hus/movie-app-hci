@@ -12,6 +12,8 @@
     <None Remove="Assets\jake-hills-23LET4Hxj_U-unsplash.jpg" />
     <None Remove="Assets\lan-deng-eVqU1HTZL8E-unsplash.jpg" />
     <None Remove="Assets\MovieImage.png" />
+    <None Remove="Assets\no-photo.png" />
+    <None Remove="Assets\user.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +23,7 @@
   <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.2.1" />
     <PackageReference Include="MySql.Data" Version="8.0.26" />
+    <PackageReference Include="Prism.Wpf" Version="8.1.97" />
     <PackageReference Include="Syncfusion.Shared.WPF" Version="19.3.0.43" />
     <PackageReference Include="Syncfusion.Themes.MaterialDarkBlue.WPF" Version="19.3.0.44" />
     <PackageReference Include="Syncfusion.Themes.MaterialLightBlue.WPF" Version="19.3.0.44" />
@@ -40,6 +43,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\MovieImage.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\no-photo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\user.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

@@ -1,7 +1,9 @@
 ﻿using Filmoteka.Model;
+using Filmoteka.Util;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.IO;
 using System.Linq;
@@ -13,7 +15,7 @@ namespace Filmoteka.Repository
 {
     class MovieDAO
     {
-        public static readonly string connectionString = "Server=127.0.0.1;Database=mydb;Uid=root;Password=password;";
+        public static readonly string connectionString = ConfigurationManager.AppSettings["connectionString"];
 
         #region Get All Movies
         public static List<Movie> GetAllMovies()
@@ -32,7 +34,7 @@ namespace Filmoteka.Repository
                 localMovie.Name = row.Field<string>("Name");
                 localMovie.Description = row.Field<string>("Description");
                 localMovie.Duration = row.Field<int>("Duration");
-                localMovie.Image = ConvertByteArrToBitmap(row.Field<byte[]>("Image"));
+                localMovie.Image = ImageUtil.ConvertByteArrToBitmap(row.Field<byte[]>("Image"));
                 localMovie.OriginCountry = CountryDAO.GetCountryById(row.Field<int>("CountryId"));
                 localMovie.Language = LanguageDAO.GetLanguageById(row.Field<int>("LanguageId"));
                 localMovie.Producers = ProducerDAO.GetProducersByMovieId(localMovie.ID);
@@ -90,7 +92,18 @@ namespace Filmoteka.Repository
             movie.Producers.ForEach(producer =>  DBUtil.ExecuteCommand(updateProducers.Replace('?', Char.Parse(producer.ID.ToString()))));
             movie.Stars.ForEach(star => DBUtil.ExecuteCommand(updateStars.Replace('?', Char.Parse(star.ID.ToString()))));
             movie.Genres.ForEach(genre => DBUtil.ExecuteCommand(updateGenres.Replace('?', Char.Parse(genre.ID.ToString()))));
-
+            if (movie.Image != null)
+            {
+                using MySqlConnection mySqlConnection = new(ConfigurationManager.AppSettings["connectionString"]);
+                MySqlCommand imageInsertCommand = new("update mediacontent set Image=@image where ContentId=" + movie.ID, mySqlConnection);
+                mySqlConnection.Open();
+                MySqlParameter imageParam = new("@image", MySqlDbType.LongBlob);
+                imageParam.Value = ImageUtil.ConvertBitmapToByteArr(movie.Image);
+                imageInsertCommand.Parameters.Add(imageParam);
+                imageInsertCommand.Prepare();
+                imageInsertCommand.ExecuteNonQuery();
+                mySqlConnection.Close();
+            }
             return movie;
         }
         #endregion
@@ -117,7 +130,7 @@ namespace Filmoteka.Repository
             countryParam.Value = movie.OriginCountry.ID;
             languageParam.Value = movie.Language.ID;
             durationParam.Value = movie.Duration;
-            imageParam.Value = ConvertBitmapToByteArr(movie.Image);
+            imageParam.Value = ImageUtil.ConvertBitmapToByteArr(movie.Image);
 
             command.Parameters.Add(nameParam);
             command.Parameters.Add(descriptionParam);
@@ -176,36 +189,6 @@ namespace Filmoteka.Repository
 
 
             return movie;
-        }
-        #endregion
-
-        #region Byte To Bitmap converter
-        private static BitmapImage ConvertByteArrToBitmap(byte[] arr)
-        {
-            BitmapImage bitmapImage = new();
-            if (arr != null)
-            {
-                using MemoryStream ms = new(arr);
-                bitmapImage.BeginInit();
-                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                bitmapImage.StreamSource = ms;
-                bitmapImage.EndInit();
-
-                return bitmapImage;
-            }
-            return null;
-         
-        }
-        #endregion
-
-        #region Bitmap to Byte Arr Converter
-        private static byte[] ConvertBitmapToByteArr(BitmapImage image)
-        { 
-            JpegBitmapEncoder encoder = new();
-            encoder.Frames.Add(BitmapFrame.Create(image));
-            using MemoryStream ms = new MemoryStream();
-            encoder.Save(ms);
-            return ms.ToArray();
         }
         #endregion
     }
