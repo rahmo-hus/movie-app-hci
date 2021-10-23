@@ -1,4 +1,5 @@
-﻿using Filmoteka.Model;
+﻿using Filmoteka.DAO;
+using Filmoteka.Model;
 using Filmoteka.Util;
 using MySql.Data.MySqlClient;
 using System;
@@ -11,17 +12,43 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
-namespace Filmoteka.Repository
+namespace Filmoteka.DAO
 {
     class MovieDAO
     {
         public static readonly string connectionString = ConfigurationManager.AppSettings["connectionString"];
 
+        #region Get Movie By ID
+        public static Movie GetById(int movieId)
+        {
+            FormattableString sqlGetMovieById = $"select mov.MovieId, med.Name, med.Description, med.Budget, med.CountryId, med.LanguageId,med.Image,  mov.Duration from mediacontent med inner join movie mov on mov.MovieId = med.ContentId where mov.MovieId={movieId}";
+
+            DataTable dataTable = DBUtil.ExecuteExtraction(sqlGetMovieById.ToString());
+            Movie movie = null;
+            foreach(DataRow row in dataTable.Rows)
+            {
+                movie = new();
+                movie.ID = row.Field<int>("MovieId");
+                movie.Name = row.Field<string>("Name");
+                movie.Description = row.Field<string>("Description");
+                movie.Duration = row.Field<int>("Duration");
+                movie.Image = ImageUtil.ConvertByteArrToBitmap(row.Field<byte[]>("Image"));
+                movie.OriginCountry = CountryDAO.GetCountryById(row.Field<int>("CountryId"));
+                movie.Language = LanguageDAO.GetLanguageById(row.Field<int>("LanguageId"));
+                movie.Producers = ProducerDAO.GetProducersByMovieId(movie.ID);
+                movie.Stars = StarDAO.GetCastByMovieId(movie.ID);
+                movie.Genres = GenreDAO.GetGenresByMovieId(movie.ID);
+                movie.Ratings = RatingDAO.GetRatingsByMovieId(movie.ID);
+            }
+            return movie;
+        }
+        #endregion
+
         #region Get All Movies
         public static List<Movie> GetAllMovies()
         {
-            const string sqlMovieDataStatement = "select mov.ContentId, med.Name, med.Description, med.Budget, med.CountryId, med.LanguageId,med.Image,  mov.Duration from mediacontent med " +
-                "inner join movie mov on mov.ContentId = med.ContentId;";
+            const string sqlMovieDataStatement = "select mov.MovieId, med.Name, med.Description, med.Budget, med.CountryId, med.LanguageId,med.Image,  mov.Duration from mediacontent med " +
+                "inner join movie mov on mov.MovieId = med.ContentId;";
 
             DataTable movieContentDataTable = DBUtil.ExecuteExtraction(sqlMovieDataStatement);
 
@@ -30,7 +57,7 @@ namespace Filmoteka.Repository
             foreach(DataRow row in movieContentDataTable.Rows)
             {
                 Movie localMovie = new();
-                localMovie.ID = row.Field<int>("ContentId");
+                localMovie.ID = row.Field<int>("MovieId");
                 localMovie.Name = row.Field<string>("Name");
                 localMovie.Description = row.Field<string>("Description");
                 localMovie.Duration = row.Field<int>("Duration");
@@ -40,6 +67,7 @@ namespace Filmoteka.Repository
                 localMovie.Producers = ProducerDAO.GetProducersByMovieId(localMovie.ID);
                 localMovie.Stars = StarDAO.GetCastByMovieId(localMovie.ID);
                 localMovie.Genres = GenreDAO.GetGenresByMovieId(localMovie.ID);
+                localMovie.Ratings = RatingDAO.GetRatingsByMovieId(localMovie.ID);
                 movies.Add(localMovie);
             }
            
@@ -73,10 +101,10 @@ namespace Filmoteka.Repository
         #region Update movie
         public static Movie Update(Movie movie)
         {
-            string sqlUpdateMovieData = "update mediacontent med inner join movie mov on mov.ContentId = med.ContentId set " +
+            string sqlUpdateMovieData = "update mediacontent med inner join movie mov on mov.MovieId = med.ContentId set " +
                 "med.Name = '"+movie.Name+"', med.Description ='"+movie.Description+"', med.CountryId = "+movie.OriginCountry.ID+", " +
                 "med.LanguageId = "+movie.Language.ID+", mov.Duration = "+movie.Duration+", med.Budget = "+movie.Budget +
-                " where mov.ContentId ="+movie.ID+";";
+                " where mov.MovieId ="+movie.ID+";";
             //", med.Image = "+ConvertBitmapToByteArr(movie.Image)+"
 
             string sqlDeleteStatements = "delete from producermediacontent pmc where pmc.ContentId =" + movie.ID + ";" +
@@ -87,11 +115,12 @@ namespace Filmoteka.Repository
             string updateStars = "insert into starmediacontent values(" + movie.ID + ",?); ";
             string updateGenres ="insert into genremediacontent(ContentId, GenreId) values("+movie.ID+",?); ";
 
+
             DBUtil.ExecuteCommand(sqlUpdateMovieData);
             DBUtil.ExecuteCommand(sqlDeleteStatements);
-            movie.Producers.ForEach(producer =>  DBUtil.ExecuteCommand(updateProducers.Replace('?', Char.Parse(producer.ID.ToString()))));
-            movie.Stars.ForEach(star => DBUtil.ExecuteCommand(updateStars.Replace('?', Char.Parse(star.ID.ToString()))));
-            movie.Genres.ForEach(genre => DBUtil.ExecuteCommand(updateGenres.Replace('?', Char.Parse(genre.ID.ToString()))));
+            movie.Producers.ForEach(producer =>  DBUtil.ExecuteCommand(updateProducers.Replace("?", producer.ID.ToString())));
+            movie.Stars.ForEach(star => DBUtil.ExecuteCommand(updateStars.Replace("?", star.ID.ToString())));
+            movie.Genres.ForEach(genre => DBUtil.ExecuteCommand(updateGenres.Replace("?", genre.ID.ToString())));
             if (movie.Image != null)
             {
                 using MySqlConnection mySqlConnection = new(ConfigurationManager.AppSettings["connectionString"]);
@@ -122,7 +151,7 @@ namespace Filmoteka.Repository
             MySqlParameter countryParam = new("@countryId", MySqlDbType.Int32);
             MySqlParameter languageParam = new("@languageId", MySqlDbType.Int32);
             MySqlParameter durationParam = new("@duration", MySqlDbType.Int32);
-            MySqlParameter imageParam = new("@image", MySqlDbType.Blob);
+            MySqlParameter imageParam = new("@image", MySqlDbType.LongBlob);
 
             nameParam.Value = movie.Name;
             descriptionParam.Value = movie.Description;
@@ -189,6 +218,16 @@ namespace Filmoteka.Repository
 
 
             return movie;
+        }
+        #endregion
+
+        #region Rate movie
+        public static bool RateMovie(int movieId, int rating, int userId)
+        {
+            FormattableString sqlRateMovie = $"insert into rating (ContentId, UserId, Rating, Date) values ({movieId}, {userId}, {rating}, CURRENT_TIMESTAMP) on duplicate key update Date=values(Date), Rating=values(Rating); ";
+
+            DBUtil.ExecuteCommand(sqlRateMovie.ToString());
+            return true;
         }
         #endregion
     }

@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Filmoteka.Repository
+namespace Filmoteka.DAO
 {
     class ProducerDAO
     {
@@ -24,7 +24,7 @@ namespace Filmoteka.Repository
                 DataTable dataTable = DBUtil.ExecuteExtraction(sqlSelectLastInserted);
                 foreach (DataRow row in dataTable.Rows)
                     producer.ID = Convert.ToInt32(row.Field<UInt64>("last_insert_id()"));
-                DBUtil.ExecuteCommand("insert into producer values (" + producer.ID + ")");
+                DBUtil.ExecuteCommand("insert into producer (ProducerId) values (" + producer.ID + ")");
 
                 using MySqlConnection mySqlConnection = new(ConfigurationManager.AppSettings["connectionString"]);
                 MySqlCommand imageInsertCommand = new("update person set Image=@image where PersonId=" + producer.ID, mySqlConnection);
@@ -79,7 +79,7 @@ namespace Filmoteka.Repository
         #region Get Producer By Movie ID
         public static List<Producer> GetProducersByMovieId(int movieId)
         {
-            string sqlSelectProducersByMovieId = "select pro.ProducerId, per.FirstName, per.LastName, per.Gender, per.DateOfBirth, per.BirthPlace, per.Bio, per.Nickname, per.Image" +
+            string sqlSelectProducersByMovieId = "select pro.ProducerId, per.FirstName, per.LastName, per.Gender, per.DateOfBirth,per.Bio,  per.Image" +
              " from person per inner join producermediacontent pro on pro.ProducerId = per.PersonId where pro.ContentId =" + movieId + ";";
 
             List<Producer> producers = new();
@@ -93,9 +93,7 @@ namespace Filmoteka.Repository
                                        row.Field<string>("LastName"),
                                        row.Field<string>("Gender"),
                                        row.Field<string>("DateOfBirth"),
-                                       row.Field<string>("BirthPlace"),
                                        row.Field<string>("Bio"),
-                                       row.Field<string>("Nickname"),
                                        ImageUtil.ConvertByteArrToBitmap(row.Field<byte[]>("Image"))
                                    ));
             return producers;
@@ -116,9 +114,7 @@ namespace Filmoteka.Repository
                         row.Field<string>("LastName"),
                         row.Field<string>("Gender"),
                         row.Field<string>("DateOfBirth"),
-                        row.Field<string>("BirthPlace"),
                         row.Field<string>("Bio"),
-                        row.Field<string>("Nickname"),
                         ImageUtil.ConvertByteArrToBitmap(row.Field<byte[]>("Image"))
                     ));
 

@@ -11,7 +11,7 @@ namespace Filmoteka.Model
     {
         public List<MediaContent> MediaContents { get; set; }
         public Writer(int id, string firstName, string lastName, string gender, string dateOfBirth, string birthPlace, string bio, string nickname, List<MediaContent> mediaContents, BitmapImage image) :
-    base(id, firstName, lastName, gender, dateOfBirth, birthPlace, bio, nickname, image)
+    base(id, firstName, lastName, gender, dateOfBirth, bio, image)
         {
             MediaContents = mediaContents;
         }

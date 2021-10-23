@@ -19,16 +19,14 @@ namespace Filmoteka.Model
         public string Nickname { get; set; }
         public BitmapImage Image { get; set; }
 
-        public Person(int iD, string firstName, string lastName, string gender, string dateOfBirth, string birthPlace, string bio, string nickname, BitmapImage image)
+        public Person(int iD, string firstName, string lastName, string gender, string dateOfBirth, string bio, BitmapImage image)
         {
             ID = iD;
             FirstName = firstName;
             LastName = lastName;
             Gender = gender;
             DateOfBirth = dateOfBirth;
-            BirthPlace = birthPlace;
             Bio = bio;
-            Nickname = nickname;
             Image = image;
         }
 

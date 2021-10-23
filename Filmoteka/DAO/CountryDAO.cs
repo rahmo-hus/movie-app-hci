@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Filmoteka.Repository
+namespace Filmoteka.DAO
 {
     class CountryDAO
     {
         public static List<Country> GetGountries()
         {
-            const string sqlCommand = "select * from mydb.countries";
+            const string sqlCommand = "select * from countries";
             List<Country> dataList = new();
             DataTable table = DBUtil.ExecuteExtraction(sqlCommand);
 

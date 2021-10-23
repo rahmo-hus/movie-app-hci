@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Filmoteka.Repository
+namespace Filmoteka.DAO
 {
     class GenreDAO
     {

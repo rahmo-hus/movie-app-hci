@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 
-namespace Filmoteka.Repository
+namespace Filmoteka.DAO
 {
     class DBUtil
     {

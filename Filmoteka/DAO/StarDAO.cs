@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Filmoteka.Repository
+namespace Filmoteka.DAO
 {
     class StarDAO
     {
@@ -58,7 +58,7 @@ namespace Filmoteka.Repository
                 DataTable dataTable = DBUtil.ExecuteExtraction(sqlSelectLastInserted);
                 foreach (DataRow row in dataTable.Rows)
                     star.ID = Convert.ToInt32(row.Field<UInt64>("last_insert_id()"));
-                DBUtil.ExecuteCommand("insert into star values (" + star.ID + ")");
+                DBUtil.ExecuteCommand("insert into star (StarId) values (" + star.ID + ")");
 
                 using MySqlConnection mySqlConnection = new(ConfigurationManager.AppSettings["connectionString"]);
                 MySqlCommand imageInsertCommand = new("update person set Image=@image where PersonId=" + star.ID, mySqlConnection);
@@ -80,7 +80,7 @@ namespace Filmoteka.Repository
         #region Get Cast By movie Id
         public static List<Star> GetCastByMovieId(int movieId)
         {
-            string sqlSelectCastByMovieId = "select s.starId, p.FirstName, p.LastName, p.Gender, p.DateOfBirth,p.Image, p.BirthPlace, p.Bio, p.Nickname from person p" +
+            string sqlSelectCastByMovieId = "select s.StarId, p.FirstName, p.LastName, p.Gender, p.DateOfBirth,p.Image, p.Bio from person p" +
             " inner join starmediacontent s on s.StarId = p.PersonId where s.ContentId = " + movieId + ";";
 
             List<Star> stars = new();
@@ -94,9 +94,7 @@ namespace Filmoteka.Repository
                     row.Field<string>("LastName"),
                     row.Field<string>("Gender"),
                     row.Field<string>("DateOfBirth"),
-                    row.Field<string>("BirthPlace"),
                     row.Field<string>("Bio"),
-                    row.Field<string>("Nickname"),
                     ImageUtil.ConvertByteArrToBitmap(row.Field<byte[]>("Image"))
                 ));
 
@@ -118,9 +116,7 @@ namespace Filmoteka.Repository
                         row.Field<string>("LastName"),
                         row.Field<string>("Gender"),
                         row.Field<string>("DateOfBirth"),
-                        row.Field<string>("BirthPlace"),
                         row.Field<string>("Bio"),
-                        row.Field<string>("Nickname"),
                         ImageUtil.ConvertByteArrToBitmap(row.Field<byte[]>("Image"))
                     ));
 
