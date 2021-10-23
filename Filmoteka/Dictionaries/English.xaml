@@ -1,0 +1,73 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:system="clr-namespace:System;assembly=mscorlib">
+    
+    <system:String x:Key="login">Login</system:String>
+    <system:String x:Key="enterUsernameHint">Enter username</system:String>
+    <system:String x:Key="enterPasswordHint">Enter password</system:String>
+    <system:String x:Key="loginButton">Login</system:String>
+
+    <system:String x:Key="movies">Movies</system:String>
+    <system:String x:Key="logout">Logout</system:String>
+    <system:String x:Key="reset">Reset</system:String>
+    <system:String x:Key="enterMovieHint">Search movie</system:String>
+
+    <system:String x:Key="rate">Rate</system:String>
+    <system:String x:Key="genres">Genres</system:String>
+    <system:String x:Key="storyline">Storyline </system:String>
+    <system:String x:Key="casts">Casts</system:String>
+    <system:String x:Key="producers">Producers </system:String>
+    <system:String x:Key="languages">Language </system:String>
+    <system:String x:Key="countryOfOrigin">Country of origin </system:String>
+
+    <system:String x:Key="addAMovie">Add a movie</system:String>
+    <system:String x:Key="name">Name</system:String>
+    <system:String x:Key="selectImage">Select an image</system:String>
+    <system:String x:Key="country">Country</system:String>
+    <system:String x:Key="description">Description</system:String>
+    <system:String x:Key="budget">Budget</system:String>
+    <system:String x:Key="genre">Genre</system:String>
+    <system:String x:Key="cast">Cast</system:String>
+    <system:String x:Key="duration">Duration</system:String>
+    <system:String x:Key="language">Language</system:String>
+    <system:String x:Key="saveMovie">Save movie</system:String>
+    <system:String x:Key="editAMovie">Edit a movie</system:String>
+    <system:String x:Key="areUSureToDeleteMovie">Are you sure you want to delete this movie?</system:String>
+    <system:String x:Key="warning">Warning</system:String>
+    <system:String x:Key="successfulDelete">Successfully deleted</system:String>
+    <system:String x:Key="errorDelete">Unable to delete</system:String>
+    <system:String x:Key="updateSuccessful">Update successful</system:String>
+    <system:String x:Key="updateFailed">Update failed</system:String>
+    <system:String x:Key="movieSavedSuccessfully">Movie saved successfully</system:String>
+    <system:String x:Key="couldNotSaveMovie">Could not save a movie</system:String>
+
+    <system:String x:Key="firstName">First name</system:String>
+    <system:String x:Key="lastName">Last name</system:String>
+    <system:String x:Key="addACast">Add a cast</system:String>
+    <system:String x:Key="gender">Gender</system:String>
+    <system:String x:Key="selectBirthDate">Select birth date</system:String>
+    <system:String x:Key="bio">Bio</system:String>
+    <system:String x:Key="save">Save</system:String>
+    <system:String x:Key="editACast">Edit a cast</system:String>
+    <system:String x:Key="delete">Delete</system:String>
+    <system:String x:Key="update">Update</system:String>
+    <system:String x:Key="areUSureToDeleteCast">Are you sure you want to delete the cast?</system:String>
+    <system:String x:Key="castSavedSuccessfully">Cast saved successfully</system:String>
+    <system:String x:Key="couldNotSaveCast">Could not save a cast</system:String>
+    
+    <system:String x:Key="editAProducer">Edit a producer</system:String>
+    <system:String x:Key="areUSureToDeleteProducer">Are you sure you want to delete the producer?</system:String>
+    <system:String x:Key="producerSavedSuccessfully">Producer saved successfully</system:String>
+    <system:String x:Key="couldNotSaveProducer">Could not save a producer</system:String>
+    <system:String x:Key="addAProducer">Add a producer</system:String>
+
+    <system:String x:Key="settings">Settings</system:String>
+    <system:String x:Key="theme">Theme</system:String>
+    <system:String x:Key="darkTheme">Dark theme</system:String>
+    <system:String x:Key="lightTheme">Light theme</system:String>
+    <system:String x:Key="apply">Apply</system:String>
+    <system:String x:Key="exitWithoutSaving">Exit without saving</system:String>
+
+    <system:String x:Key="movieRatedSuccessfully">Movie rated successfully</system:String>
+
+</ResourceDictionary>

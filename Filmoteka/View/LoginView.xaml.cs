@@ -1,4 +1,9 @@
-﻿using System;
+﻿using Filmoteka.DAO;
+using Filmoteka.Model;
+using Filmoteka.DAO;
+using Syncfusion.SfSkinManager;
+using Syncfusion.Themes.MaterialDarkBlue.WPF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,7 +36,29 @@ namespace Filmoteka.View
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            new AdminView().Show();
+            if(txtUsername.Text != "" && txtPassword.Password != "")
+            {
+
+                User user = UserDAO.Login(txtUsername.Text, txtPassword.Password);
+                if(user != null && user.Role == ERole.ADMIN)
+                {
+                    new AdminView(user).Show();
+                    Close();
+                }
+                else if(user != null && user.Role == ERole.VIEWER)
+                {
+                    new UserMovieListView(user).Show();
+                    Close();
+                }
+
+            }
+
+        }
+
+        private void Click_Settings(object sender, RoutedEventArgs e)
+        {
+            new SettingsView().Show();
+            Close();
         }
     }
 }

@@ -7,7 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="C:\Users\username\.nuget\packages\haley.mvvm\6.0.4\contentFiles\any\netcoreapp3.1\Notes.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\ahmet-yalcinkaya-aNrRsB2wLDk-unsplash.jpg" />
+    <None Remove="Assets\gr-stocks-q8P8YoR6erg-unsplash.jpg" />
+    <None Remove="Assets\jake-hills-23LET4Hxj_U-unsplash.jpg" />
+    <None Remove="Assets\lan-deng-eVqU1HTZL8E-unsplash.jpg" />
     <None Remove="Assets\MovieImage.png" />
+    <None Remove="Assets\no-photo.png" />
+    <None Remove="Assets\user.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -15,11 +25,40 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DotNetProjects.Input.Toolkit" Version="6.0.68" />
+    <PackageReference Include="Haley.Extensions" Version="2.0.2" />
+    <PackageReference Include="Haley.MVVM" Version="6.0.4" />
+    <PackageReference Include="Haley.WPF" Version="5.0.10" />
+    <PackageReference Include="MahApps.Metro" Version="2.4.9" />
+    <PackageReference Include="MaterialDesignColors" Version="2.0.3" />
     <PackageReference Include="MaterialDesignThemes" Version="4.2.1" />
+    <PackageReference Include="MySql.Data" Version="8.0.26" />
+    <PackageReference Include="Prism.Wpf" Version="8.1.97" />
+    <PackageReference Include="Syncfusion.Shared.WPF" Version="19.3.0.43" />
+    <PackageReference Include="Syncfusion.Themes.MaterialDarkBlue.WPF" Version="19.3.0.44" />
+    <PackageReference Include="Syncfusion.Themes.MaterialLightBlue.WPF" Version="19.3.0.44" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\ahmet-yalcinkaya-aNrRsB2wLDk-unsplash.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\gr-stocks-q8P8YoR6erg-unsplash.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\jake-hills-23LET4Hxj_U-unsplash.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\lan-deng-eVqU1HTZL8E-unsplash.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\MovieImage.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\no-photo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\user.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
