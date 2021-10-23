@@ -1,0 +1,72 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="login">Prijava</system:String>
+    <system:String x:Key="enterUsernameHint">Unesi korisničko ime</system:String>
+    <system:String x:Key="enterPasswordHint">Unesi lozinku</system:String>
+    <system:String x:Key="loginButton">Prijavi se</system:String>
+
+    <system:String x:Key="movies">Filmovi</system:String>
+    <system:String x:Key="logout">Odjava</system:String>
+    <system:String x:Key="reset">Očisti</system:String>
+    <system:String x:Key="enterMovieHint">Pretraga filma</system:String>
+
+    <system:String x:Key="rate">Ocijeni</system:String>
+    <system:String x:Key="genres">Žanrovi </system:String>
+    <system:String x:Key="storyline">Radnja </system:String>
+    <system:String x:Key="casts">Glumci </system:String>
+    <system:String x:Key="producers">Producenti</system:String>
+    <system:String x:Key="languages">Jezik</system:String>
+    <system:String x:Key="countryOfOrigin">Država porijekla</system:String>
+
+    <system:String x:Key="addAMovie">Dodavanje filma</system:String>
+    <system:String x:Key="name">Naziv</system:String>
+    <system:String x:Key="selectImage">Odaberi sliku</system:String>
+    <system:String x:Key="country">Država</system:String>
+    <system:String x:Key="description">Opis</system:String>
+    <system:String x:Key="budget">Budžet</system:String>
+    <system:String x:Key="genre">Žanr</system:String>
+    <system:String x:Key="cast">Glumci</system:String>
+    <system:String x:Key="duration">Trajanje (min)</system:String>
+    <system:String x:Key="language">Jezik</system:String>
+    <system:String x:Key="saveMovie">Spremi film</system:String>
+    <system:String x:Key="editAMovie">Izmjena filma</system:String>
+    <system:String x:Key="areUSureToDeleteMovie">Da li ste sigurni da želite obrisati film?</system:String>
+    <system:String x:Key="warning">Upozorenje</system:String>
+    <system:String x:Key="successfulDelete">Uspjesno obrisano</system:String>
+    <system:String x:Key="errorDelete">Neuspjesno brisanje</system:String>
+    <system:String x:Key="updateSuccessful">Ažuriranje uspješno</system:String>
+    <system:String x:Key="updateFailed">Neuspješno ažuriranje</system:String>
+    <system:String x:Key="movieSavedSuccessfully">Uspješno dodan film</system:String>
+    <system:String x:Key="couldNotSaveMovie">Nije moguće dodati film</system:String>
+
+    <system:String x:Key="firstName">Ime</system:String>
+    <system:String x:Key="lastName">Prezime</system:String>
+    <system:String x:Key="addACast">Dodavanje glumca</system:String>
+    <system:String x:Key="gender">Spol</system:String>
+    <system:String x:Key="selectBirthDate">Odabir datuma rođenja</system:String>
+    <system:String x:Key="bio">Biografija</system:String>
+    <system:String x:Key="save">Spremi</system:String>
+    <system:String x:Key="editACast">Izmjena glumca</system:String>
+    <system:String x:Key="delete">Izbriši</system:String>
+    <system:String x:Key="update">Ažuriraj</system:String>
+    <system:String x:Key="areUSureToDeleteCast">Da li ste sigurni da želite obrisati glumca?</system:String>
+    <system:String x:Key="castSavedSuccessfully">Upješno dodan glumac</system:String>
+    <system:String x:Key="couldNotSaveCast">Nije moguće dodati glumca</system:String>
+
+    <system:String x:Key="editAProducer">Izmjena producenta</system:String>
+    <system:String x:Key="areUSureToDeleteProducer">Da li ste sigurni da želite obrisati glumca?</system:String>
+    <system:String x:Key="producerSavedSuccessfully">Uspješno dodan producent</system:String>
+    <system:String x:Key="couldNotSaveProducer">Nije moguće dodati producenta</system:String>
+    <system:String x:Key="addAProducer">Dodavanje producenta</system:String>
+
+    <system:String x:Key="settings">Postavke</system:String>
+    <system:String x:Key="theme">Tema</system:String>
+    <system:String x:Key="darkTheme">Tamna tema</system:String>
+    <system:String x:Key="lightTheme">Svijetla tema</system:String>
+    <system:String x:Key="apply">Primjeni</system:String>
+    <system:String x:Key="exitWithoutSaving">Zatvori bez spremanja</system:String>
+
+    <system:String x:Key="movieRatedSuccessfully">Film je uspješno ocijenjen!</system:String>
+</ResourceDictionary>
