@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="C:\Users\username\.nuget\packages\haley.mvvm\6.0.4\contentFiles\any\netcoreapp3.1\Notes.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Assets\ahmet-yalcinkaya-aNrRsB2wLDk-unsplash.jpg" />
     <None Remove="Assets\gr-stocks-q8P8YoR6erg-unsplash.jpg" />
     <None Remove="Assets\jake-hills-23LET4Hxj_U-unsplash.jpg" />
@@ -21,6 +25,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DotNetProjects.Input.Toolkit" Version="6.0.68" />
+    <PackageReference Include="Haley.Extensions" Version="2.0.2" />
+    <PackageReference Include="Haley.MVVM" Version="6.0.4" />
+    <PackageReference Include="Haley.WPF" Version="5.0.10" />
+    <PackageReference Include="MahApps.Metro" Version="2.4.9" />
+    <PackageReference Include="MaterialDesignColors" Version="2.0.3" />
     <PackageReference Include="MaterialDesignThemes" Version="4.2.1" />
     <PackageReference Include="MySql.Data" Version="8.0.26" />
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />
