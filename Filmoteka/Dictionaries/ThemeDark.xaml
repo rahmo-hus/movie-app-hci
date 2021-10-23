@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:syncfusionskin ="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF">
+
+    <SolidColorBrush x:Key="background" Color="#100E17"/>
+    <SolidColorBrush x:Key="fontColor" Color="white"/>
+    <Color x:Key="startColor">#FFE63070</Color>
+    <Color x:Key="endColor">#FFFE8704</Color>
+
+    <Color x:Key="dashboardStartColor" >#FF765757</Color>
+    <Color x:Key="dashboardEndColor">#FF38252F</Color>
+    <SolidColorBrush x:Key="dashboardHeadingBackground" Color="#FF2E293F"></SolidColorBrush>
+    <syncfusionskin:Theme x:Key="comboBoxTheme" ThemeName="MaterialDarkBlue"/>
+
+    <SolidColorBrush x:Key="buttonBackground" Color="#D94448"></SolidColorBrush>
+    <Color x:Key="buttonBorderBrush"></Color>
+
+</ResourceDictionary>
