@@ -1,5 +1,5 @@
 ﻿using Filmoteka.Model;
-using Filmoteka.Repository;
+using Filmoteka.DAO;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -38,8 +38,8 @@ namespace Filmoteka.View
             txtLastName.Text = producer.LastName;
             txtProducerBio.Text = producer.Bio;
             datePicker.Text = producer.DateOfBirth;
-            heading.Text = "Edit a cast";
-            confirmButton.Content = "Update";
+            heading.Text = FindResource("editAProducer") as string;
+            confirmButton.Content = FindResource("update") as string;
             ProducerImage = producer.Image;
 
             foreach (Syncfusion.Windows.Tools.Controls.ComboBoxItemAdv item in comboGenderSelect.Items)
@@ -57,7 +57,7 @@ namespace Filmoteka.View
 
             Button button = new();
             button.Width = 100;
-            button.Content = "Delete";
+            button.Content = FindResource("delete") as string;
             button.Margin = new Thickness(100, 0, 0, 0);
             button.Click += Delete_Click;
             buttonPanel.Children.Add(button);
@@ -67,16 +67,16 @@ namespace Filmoteka.View
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult messageBox = MessageBox.Show("Are you sure you want to delete the producer?", "Warning", MessageBoxButton.YesNo);
+            MessageBoxResult messageBox = MessageBox.Show(FindResource("areUSureToDeleteProducer") as string, FindResource("warning") as string, MessageBoxButton.YesNo);
             switch (messageBox)
             {
                 case MessageBoxResult.Yes:
                     if (ProducerDAO.Delete(ID))
                     {
-                        MessageBox.Show("Successful deletion", "Info window", MessageBoxButton.OK);
+                        MessageBox.Show(FindResource("successfulDelete") as string, "Info", MessageBoxButton.OK);
                         Close();
                     }
-                    else MessageBox.Show("Unable to delete", "Error", MessageBoxButton.OK);
+                    else MessageBox.Show(FindResource("errorDelete") as string, "Error", MessageBoxButton.OK);
                     break;
                 default:
                     break;
@@ -94,18 +94,18 @@ namespace Filmoteka.View
             producer.Bio = txtProducerBio.Text;
             producer.Image = ProducerImage;
 
-            if (confirmButton.Content.ToString().Contains("Update"))
+            if (confirmButton.Content.ToString().Contains(FindResource("update") as string))
             {
                 producer.ID = ID;
                 if (ProducerDAO.Update(producer))
-                    MessageBox.Show("Update successful", "Info", MessageBoxButton.OK);
-                else MessageBox.Show("Update failed", "Info", MessageBoxButton.OK);
+                    MessageBox.Show(FindResource("updateSuccessful") as string, "Info", MessageBoxButton.OK);
+                else MessageBox.Show(FindResource("updateFailed") as string, "Error", MessageBoxButton.OK);
             }
             else
             {
                 if (ProducerDAO.Save(producer) != null)
-                    MessageBox.Show("Producer saved successfuly", "Info", MessageBoxButton.OK);
-                else MessageBox.Show("Could not add an actor", "Info", MessageBoxButton.OK);
+                    MessageBox.Show(FindResource("producerSavedSuccessfully") as string, "Info", MessageBoxButton.OK);
+                else MessageBox.Show(FindResource("couldNotSaveProducer") as string, "Error", MessageBoxButton.OK);
             }
         }
 

@@ -9,34 +9,36 @@
         Title="LoginView" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
 
     <Grid>
-        <Grid.Background>
-            <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
-                <GradientStop Color="#FFE63070" Offset="1"/>
-                <GradientStop Color="#FFFE8704" Offset="0"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-        <Border Height="390" VerticalAlignment="Top" CornerRadius="0 0 180 0" Background="#100E17" MouseDown="Border_MouseDown">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
+                    <GradientStop Color="{DynamicResource startColor}" Offset="1"/>
+                    <GradientStop Color="{DynamicResource endColor}" Offset="0"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Border Height="390" VerticalAlignment="Top" CornerRadius="0 0 180 0" Background="{DynamicResource background}" MouseDown="Border_MouseDown">
             
-        </Border>
+            </Border>
         <StackPanel Orientation="Horizontal">
             <StackPanel Width="350">
-
                 <Image Source="/Assets/MovieImage.png" Height="360" VerticalAlignment="Top" Margin="30" />
             </StackPanel>
-            <StackPanel Width="350" Margin="20 40">
-                <TextBlock Text="User Login" Margin="20" Foreground="White" TextAlignment="Center" FontSize="38" FontFamily="Great Vibes"/>
+            <StackPanel Width="350" Margin="20 0 0 40">
+                <Button HorizontalAlignment="Right" Click="Click_Settings" BorderThickness="2" BorderBrush="{DynamicResource buttonBackground}" Background="{DynamicResource buttonBackground}" Foreground="{DynamicResource fontColor}" materialDesign:ButtonAssist.CornerRadius="10" Margin="0 20 50 0">
+                    <materialDesign:PackIcon Kind="Settings" Foreground="{DynamicResource fontColor}"/>
+                </Button>
+                <TextBlock Text="{DynamicResource login}" Margin="20" Foreground="{DynamicResource fontColor}" TextAlignment="Center" FontSize="38" FontFamily="Great Vibes"/>
                 <StackPanel Orientation="Horizontal" Margin="10">
-                    <materialDesign:PackIcon Kind="User" Width="25" Height="25" Foreground="White"/>
-                    <TextBox x:Name="txtUsername" Margin="10 0" materialDesign:HintAssist.Hint="Enter username" Foreground="White" Width="250" BorderBrush="white" CaretBrush="#FFD94448" SelectionBrush="#FFD94448"/>
+                    <materialDesign:PackIcon Kind="User" Width="25" Height="25" Foreground="{DynamicResource fontColor}"/>
+                    <TextBox x:Name="txtUsername" Margin="10 0" materialDesign:HintAssist.Hint="{DynamicResource enterUsernameHint}" Foreground="{DynamicResource fontColor}" Width="250" BorderBrush="{DynamicResource fontColor}" CaretBrush="#FFD94448" SelectionBrush="#FFD94448"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="10">
-                    <materialDesign:PackIcon Kind="Lock" Width="25" Height="25" Foreground="White"/>
-                    <PasswordBox x:Name="txtPassword" Margin="10 0" materialDesign:HintAssist.Hint="********" Foreground="White" Width="250" BorderBrush="white" CaretBrush="#FFD94448" SelectionBrush="#FFD94448"/>
+                    <materialDesign:PackIcon Kind="Lock" Width="25" Height="25" Foreground="{DynamicResource fontColor}"/>
+                    <PasswordBox x:Name="txtPassword" Margin="10 0" materialDesign:HintAssist.Hint="********" Foreground="{DynamicResource fontColor}" Width="250" BorderBrush="{DynamicResource fontColor}" CaretBrush="#FFD94448" SelectionBrush="#FFD94448"/>
                 </StackPanel>
                 <StackPanel Margin="10" HorizontalAlignment="Center">
                     <Button Width="100" Height="40" Style="{StaticResource MaterialDesignRaisedButton}"
-                            materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="2" BorderBrush="#D94448"
-                            Background="#D94448" Foreground="White" ToolTip="Login" x:Name="btnLogin" Click="btnLogin_Click" Content="Login">
+                            materialDesign:ButtonAssist.CornerRadius="10" BorderThickness="2" BorderBrush="{DynamicResource buttonBackground}"
+                            Background="{DynamicResource buttonBackground}" Foreground="{DynamicResource fontColor}" ToolTip="{DynamicResource loginButton}" x:Name="btnLogin" Click="btnLogin_Click" Content="{DynamicResource loginButton}" FontWeight="Bold">
                         
                     </Button>
                 </StackPanel>

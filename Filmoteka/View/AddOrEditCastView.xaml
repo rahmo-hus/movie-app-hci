@@ -21,16 +21,16 @@
         <Grid Grid.RowSpan="3">
             <Grid.Background>
                 <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
-                    <GradientStop Color="#FFE63070" Offset="1"/>
-                    <GradientStop Color="#FFFE8704" Offset="0"/>
+                    <GradientStop Color="{DynamicResource startColor}" Offset="1"/>
+                    <GradientStop Color="{DynamicResource endColor}" Offset="0"/>
                 </LinearGradientBrush>
             </Grid.Background>
-            <Border VerticalAlignment="Top" x:Name="border"  Height="390" CornerRadius="0 0 180 0" Background="#100E17" MouseDown="Border_MouseDown">
+            <Border VerticalAlignment="Top" x:Name="border"  Height="390" CornerRadius="0 0 180 0" Background="{DynamicResource background}" MouseDown="Border_MouseDown">
             </Border>
         </Grid>
         <Grid Grid.Row="0" Grid.Column="0">
             <DockPanel x:Name="headingDockPanel" HorizontalAlignment="Center" VerticalAlignment="Center" LastChildFill="False">
-                <TextBlock Margin="10" VerticalAlignment="Center" x:Name="heading"  Text="Add a cast" Foreground="White" FontSize="24"/>
+                <TextBlock Margin="10" VerticalAlignment="Center" x:Name="heading"  Text="{DynamicResource addACast}" Foreground="{DynamicResource fontColor}" FontSize="24"/>
             </DockPanel>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0">
@@ -52,38 +52,38 @@
                     </Grid>
                     <Grid Grid.Row="1">
                         <DockPanel HorizontalAlignment="Center" Margin="5">
-                            <Button x:Name="imagePicker" Click="OpenFileDialog" Content="Select an Image" Width="300"/>
+                            <Button x:Name="imagePicker" Click="OpenFileDialog" Content="{DynamicResource selectImage}" Width="300"/>
                         </DockPanel>
                     </Grid>
                     <Grid Grid.Row="2">
                         <DockPanel VerticalAlignment="Center" HorizontalAlignment="Stretch" >
-                            <TextBox x:Name="txtFirstName" Margin="5" materialDesign:HintAssist.Hint="First Name" Foreground="White" MinWidth="200" MaxWidth="300" BorderBrush="white" CaretBrush="#FFD94448" SelectionBrush="#FFD94448"/>
+                            <TextBox x:Name="txtFirstName" Margin="5" materialDesign:HintAssist.Hint="{DynamicResource firstName}" Foreground="{DynamicResource fontColor}" MinWidth="200" MaxWidth="300" BorderBrush="{DynamicResource fontColor}" CaretBrush="#FFD94448" SelectionBrush="#FFD94448"/>
                         </DockPanel>
                     </Grid>
                     <Grid Grid.Row="3" Grid.Column="0">
                         <DockPanel VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="1">
-                            <TextBox x:Name="txtLastName" Margin="5" materialDesign:HintAssist.Hint="Last Name" Foreground="White" MinWidth="200" MaxWidth="300" BorderBrush="white" CaretBrush="#FFD94448" SelectionBrush="#FFD94448"/>
+                            <TextBox x:Name="txtLastName" Margin="5"   materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="{DynamicResource lastName}" Foreground="{DynamicResource fontColor}" MinWidth="200" MaxWidth="300" BorderBrush="{DynamicResource fontColor}" CaretBrush="#FFD94448" SelectionBrush="#FFD94448"/>
                         </DockPanel>
                     </Grid>
                     <Grid Grid.Row="4">
                         <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2">
-                            <syncfusion:ComboBoxAdv syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialDarkBlue}" materialDesign:ThemeAssist.Theme="Dark"  x:Name="comboGenderSelect" DefaultText="Gender" Width="115" Margin="5" BorderBrush="White" AllowMultiSelect="False">
+                            <syncfusion:ComboBoxAdv syncfusionskin:SfSkinManager.Theme="{DynamicResource comboBoxTheme}"  x:Name="comboGenderSelect" DefaultText="{DynamicResource gender}" Width="115" Margin="5" BorderBrush="{DynamicResource fontColor}" AllowMultiSelect="False">
                                 <syncfusion:ComboBoxItemAdv Content="M"></syncfusion:ComboBoxItemAdv>
                                 <syncfusion:ComboBoxItemAdv Content="F"></syncfusion:ComboBoxItemAdv>
                             </syncfusion:ComboBoxAdv>
                             <!--<TextBox x:Name="txtGender" Margin="5" materialDesign:HintAssist.Hint="Gender (M, F)" Foreground="White" MinWidth="145" MaxWidth="150" BorderBrush="white" CaretBrush="#FFD94448" SelectionBrush="#FFD94448"/>-->
-                            <DatePicker x:Name="datePicker" Margin="5"  materialDesign:HintAssist.Hint="Select birth date" Foreground="White" MinWidth="175" MaxWidth="180" BorderBrush="#FFD94448" />
+                            <DatePicker x:Name="datePicker" Margin="5"  materialDesign:HintAssist.Hint="{DynamicResource selectBirthDate}" Foreground="{DynamicResource fontColor}" MinWidth="175" MaxWidth="180" BorderBrush="{DynamicResource fontColor}" />
                             
                         </DockPanel>
                     </Grid>
                     <Grid Grid.Row="5">
                         <DockPanel  Margin="5" HorizontalAlignment="Center">
-                            <TextBox x:Name="txtCastBio" materialDesign:HintAssist.Hint="Bio" Foreground="White" Width="300" BorderBrush="White" TextWrapping="Wrap"  />
+                            <TextBox x:Name="txtCastBio"   materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="{DynamicResource bio}" Foreground="{DynamicResource fontColor}" Width="300" BorderBrush="{DynamicResource fontColor}" TextWrapping="Wrap"  />
                         </DockPanel>
                     </Grid>
                     <Grid Grid.Row="6">
                         <DockPanel x:Name="buttonPanel" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Button x:Name="confirmButton" Content="Save" Width="100" Click="Bttn_Click_SaveCast"/>
+                            <Button x:Name="confirmButton" Content="{DynamicResource save}" Width="100" Click="Bttn_Click_SaveCast"/>
                         </DockPanel>
                     </Grid>
                 </Grid>

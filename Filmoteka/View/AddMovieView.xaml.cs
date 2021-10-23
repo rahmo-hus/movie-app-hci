@@ -1,5 +1,5 @@
 ﻿using Filmoteka.Model;
-using Filmoteka.Repository;
+using Filmoteka.DAO;
 using Microsoft.Win32;
 using Prism.Services.Dialogs;
 using System;
@@ -17,6 +17,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Filmoteka.Util;
 
 namespace Filmoteka.View
 {
@@ -57,8 +58,8 @@ namespace Filmoteka.View
             txtMovieDescription.Text = movie.Description;
             txtBudget.Text = movie.Budget + "";
             txtDuration.Text = movie.Duration + "";
-            heading.Text = "Edit a movie";
-            SubmitMovie.Content = "Update movie";
+            heading.Text = FindResource("editAMovie") as string;
+            SubmitMovie.Content = FindResource("update") as string;
             MovieImage = movie.Image;
 
             if (MovieImage != null)
@@ -73,10 +74,12 @@ namespace Filmoteka.View
             Button button = new();
             button.Margin = new Thickness(490, 0, 0, 0);
             button.Width = 120;
-            button.Content = "Delete movie";
+            button.Content = FindResource("delete") as string;
             button.Click += new RoutedEventHandler(Btn_DeleteMovie);
 
             buttonPanel.Children.Add(button);
+
+            SizeChanged += OnWindowSizeChanged;
         }
         protected void OnWindowSizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -89,16 +92,16 @@ namespace Filmoteka.View
 
         private void Btn_DeleteMovie(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult messageBox = MessageBox.Show("Are you sure you want to delete movie?", "Warning", MessageBoxButton.YesNo);
+            MessageBoxResult messageBox = MessageBox.Show(FindResource("areUSureToDeleteMovie") as string,FindResource("warning") as string, MessageBoxButton.YesNo);
             switch (messageBox)
             {
                 case MessageBoxResult.Yes:
                     if (MovieDAO.Delete(ID))
                     {
-                        MessageBox.Show("Successful deletion", "Info window", MessageBoxButton.OK);
+                        MessageBox.Show(FindResource("successfulDelete") as string, "Info", MessageBoxButton.OK);
                         Close();
                     }
-                    else MessageBox.Show("Unable to delete", "Error", MessageBoxButton.OK);
+                    else MessageBox.Show(FindResource("errorDelete") as string, "Error", MessageBoxButton.OK);
                     break;
                 default:
                     break;
@@ -107,6 +110,8 @@ namespace Filmoteka.View
         }
         private void SaveMovie(object sender, RoutedEventArgs e)
         {
+
+
             List<Star> stars = new();
             List<Genre> genres = new();
             List<Producer> producers = new();
@@ -125,18 +130,18 @@ namespace Filmoteka.View
 
             if(MovieImage != null) movie.Image = MovieImage;
 
-            if (SubmitMovie.Content.ToString().Contains("Update"))
+            if (SubmitMovie.Content.ToString().Contains(FindResource("update") as string))
             {
                 movie.ID = ID;
                 if (MovieDAO.Update(movie)!= null)
-                    MessageBox.Show("Update successful", "Info", MessageBoxButton.OK);
-                else MessageBox.Show("Update failed", "Info", MessageBoxButton.OK);
+                    MessageBox.Show(FindResource("updateSuccessful") as string, "Info", MessageBoxButton.OK);
+                else MessageBox.Show(FindResource("updateFailed") as string, "Error", MessageBoxButton.OK);
             }
             else
             {
                 if (MovieDAO.Save(movie) != null)
-                    MessageBox.Show("Movie saved successfuly", "Info", MessageBoxButton.OK);
-                else MessageBox.Show("Could not add a movie", "Info", MessageBoxButton.OK);
+                    MessageBox.Show(FindResource("movieSavedSuccessfully") as string, "Info", MessageBoxButton.OK);
+                else MessageBox.Show(FindResource("couldNotSaveMovie") as string, "Error", MessageBoxButton.OK);
             }
         }
 

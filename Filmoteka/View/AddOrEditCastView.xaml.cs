@@ -1,5 +1,5 @@
 ﻿using Filmoteka.Model;
-using Filmoteka.Repository;
+using Filmoteka.DAO;
 using Microsoft.Win32;
 using Syncfusion.Windows.Tools.Controls;
 using System;
@@ -39,8 +39,8 @@ namespace Filmoteka.View
             txtLastName.Text = star.LastName;
             txtCastBio.Text = star.Bio;
             datePicker.Text = star.DateOfBirth;
-            heading.Text = "Edit a cast";
-            confirmButton.Content = "Update";
+            heading.Text = FindResource("editACast") as string;
+            confirmButton.Content = FindResource("update") as string;
             CastImage = star.Image;
 
             foreach(ComboBoxItemAdv item in comboGenderSelect.Items)
@@ -58,7 +58,7 @@ namespace Filmoteka.View
 
             Button button = new();
             button.Width = 100;
-            button.Content = "Delete";
+            button.Content = FindResource("delete").ToString();
             button.Margin = new Thickness(100, 0, 0, 0);
             button.Click += Delete_Click;
             buttonPanel.Children.Add(button);
@@ -68,16 +68,16 @@ namespace Filmoteka.View
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult messageBox = MessageBox.Show("Are you sure you want to delete the cast?", "Warning", MessageBoxButton.YesNo);
+            MessageBoxResult messageBox = MessageBox.Show(FindResource("areUSureToDeleteCast") as string, FindResource("warning") as string, MessageBoxButton.YesNo);
             switch (messageBox)
             {
                 case MessageBoxResult.Yes:
                     if (StarDAO.Delete(ID))
                     {
-                        MessageBox.Show("Successful deletion", "Info window", MessageBoxButton.OK);
+                        MessageBox.Show(FindResource("successfulDelete") as string, "Info", MessageBoxButton.OK);
                         Close();
                     }
-                    else MessageBox.Show("Unable to delete", "Error", MessageBoxButton.OK);
+                    else MessageBox.Show(FindResource("errorDelete") as string, "Error", MessageBoxButton.OK);
                     break;
                 default:
                     break;
@@ -105,18 +105,18 @@ namespace Filmoteka.View
             star.Bio = txtCastBio.Text;
             star.Image = CastImage;
 
-            if (confirmButton.Content.ToString().Contains("Update"))
+            if (confirmButton.Content.ToString().Contains(FindResource("update") as string))
             {
                 star.ID = ID;
                 if (StarDAO.Update(star))
-                    MessageBox.Show("Update successful", "Info", MessageBoxButton.OK);
-                else MessageBox.Show("Update failed", "Info", MessageBoxButton.OK);
+                    MessageBox.Show(FindResource("updateSuccessful") as string, "Info", MessageBoxButton.OK);
+                else MessageBox.Show(FindResource("updateFailed") as string, "Error", MessageBoxButton.OK);
             }
             else
             {
                 if (StarDAO.Save(star) != null)
-                    MessageBox.Show("Actor saved successfuly", "Info", MessageBoxButton.OK);
-                else MessageBox.Show("Could not add an actor", "Info", MessageBoxButton.OK);
+                    MessageBox.Show(FindResource("castSavedSuccessfully") as string, "Info", MessageBoxButton.OK);
+                else MessageBox.Show(FindResource("couldNotSaveCast") as string, "Error", MessageBoxButton.OK);
             }
         }
 
