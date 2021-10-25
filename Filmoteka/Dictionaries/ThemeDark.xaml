@@ -4,6 +4,7 @@
 
     <SolidColorBrush x:Key="background" Color="#100E17"/>
     <SolidColorBrush x:Key="fontColor" Color="white"/>
+    <SolidColorBrush x:Key="infoColor" Color="#FF979696"/>
     <Color x:Key="startColor">#FFE63070</Color>
     <Color x:Key="endColor">#FFFE8704</Color>
 

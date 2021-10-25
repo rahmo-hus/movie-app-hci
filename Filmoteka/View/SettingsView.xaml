@@ -9,7 +9,7 @@
         xmlns:local="clr-namespace:Filmoteka.View"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="SettingsView" Height="450" Width="800"  ResizeMode="NoResize">
+        Title="Settings" Height="450" Width="800"  ResizeMode="NoResize">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
@@ -20,17 +20,17 @@
         <Border x:Name="border" Height="390" VerticalAlignment="Top" CornerRadius="0 0 180 0" Background="{DynamicResource background}" MouseDown="Border_MouseDown">
         </Border>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20">
-            <TextBlock Text="{DynamicResource settings}" Margin="20" Foreground="{DynamicResource fontColor}" TextAlignment="Center" FontSize="24" FontFamily="Great Vibes"/>
-            <syncfusion:ComboBoxAdv x:Name="comboThemeSelect" Height="30" Width="120" syncfusionskin:SfSkinManager.Theme="{DynamicResource comboBoxTheme}"  DefaultText="{DynamicResource theme}">
+            <TextBlock Text="{DynamicResource settings}" Margin="20" Foreground="{DynamicResource fontColor}" TextAlignment="Center" FontSize="24" FontWeight="Bold"/>
+            <syncfusion:ComboBoxAdv x:Name="comboThemeSelect" Height="30"  syncfusionskin:SfSkinManager.Theme="{DynamicResource comboBoxTheme}"  DefaultText="{DynamicResource theme}">
                 <syncfusion:ComboBoxItemAdv Content="{DynamicResource darkTheme}"></syncfusion:ComboBoxItemAdv>
                 <syncfusion:ComboBoxItemAdv Content="{DynamicResource lightTheme}"></syncfusion:ComboBoxItemAdv>
             </syncfusion:ComboBoxAdv>
-            <syncfusion:ComboBoxAdv x:Name="comboLanguageSelect" Height="30" Width="120" syncfusionskin:SfSkinManager.Theme="{DynamicResource comboBoxTheme}"  DefaultText="{DynamicResource language}" Margin="0 20 0 0">
+            <syncfusion:ComboBoxAdv x:Name="comboLanguageSelect" Height="30" syncfusionskin:SfSkinManager.Theme="{DynamicResource comboBoxTheme}"  DefaultText="{DynamicResource language}" Margin="0 20 0 0">
                 <syncfusion:ComboBoxItemAdv Content="Bosanski"></syncfusion:ComboBoxItemAdv>
                 <syncfusion:ComboBoxItemAdv Content="English"></syncfusion:ComboBoxItemAdv>
             </syncfusion:ComboBoxAdv>
             <Button Content="{DynamicResource apply}" Click="Click_Apply" Margin="0 20"/>
-            <Button Content="{DynamicResource exitWithoutSaving}" Margin="0 20" Click="Click_Exit"></Button>
+            <Button Content="{DynamicResource exitWithoutSaving}" Margin="0" Click="Click_Exit"></Button>
         </StackPanel>
     </Grid>
 </Window>

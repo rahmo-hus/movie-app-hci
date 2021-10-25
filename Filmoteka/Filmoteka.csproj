@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Babasse-Old-School-Bobines-video.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,10 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Assets\ahmet-yalcinkaya-aNrRsB2wLDk-unsplash.jpg" />
-    <None Remove="Assets\gr-stocks-q8P8YoR6erg-unsplash.jpg" />
-    <None Remove="Assets\jake-hills-23LET4Hxj_U-unsplash.jpg" />
-    <None Remove="Assets\lan-deng-eVqU1HTZL8E-unsplash.jpg" />
+    <None Remove="Assets\Babasse-Old-School-Bobines-video.ico" />
     <None Remove="Assets\MovieImage.png" />
     <None Remove="Assets\no-photo.png" />
     <None Remove="Assets\user.png" />
@@ -40,16 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\ahmet-yalcinkaya-aNrRsB2wLDk-unsplash.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\gr-stocks-q8P8YoR6erg-unsplash.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\jake-hills-23LET4Hxj_U-unsplash.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\lan-deng-eVqU1HTZL8E-unsplash.jpg">
+    <Resource Include="Assets\Babasse-Old-School-Bobines-video.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\MovieImage.png">

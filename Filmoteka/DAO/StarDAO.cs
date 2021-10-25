@@ -5,9 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Filmoteka.DAO
 {
@@ -17,7 +14,7 @@ namespace Filmoteka.DAO
         #region Update
         public static bool Update(Star star)
         {
-            FormattableString sqlUpdateStar = $"update person set FirstName='{star.FirstName}', LastName='{star.LastName}', Gender='{star.Gender}', DateOfBirth='{star.DateOfBirth}', Bio='{star.Bio}' where PersonId = {star.ID}";
+            FormattableString sqlUpdateStar = $"update person set FirstName=\"{star.FirstName}\", LastName=\"{star.LastName}\", Gender=\"{star.Gender}\", DateOfBirth=\"{star.DateOfBirth}\", Bio=\"{star.Bio}\" where PersonId = {star.ID}";
             int success = DBUtil.ExecuteCommand(sqlUpdateStar.ToString());
             if (success != 0 && star.Image != null)
             {
@@ -50,7 +47,7 @@ namespace Filmoteka.DAO
         #region Save 
         public static Star Save(Star star)
         {
-            FormattableString sqlInsertStarData = $"insert into person (FirstName, LastName, Gender, DateOfBirth, Bio) values ('{star.FirstName}','{star.LastName}', '{star.Gender}', '{star.DateOfBirth}', '{star.Bio}')";
+            FormattableString sqlInsertStarData = $"insert into person (FirstName, LastName, Gender, DateOfBirth, Bio) values (\"{star.FirstName}\",\"{star.LastName}\", \"{star.Gender}\", \"{star.DateOfBirth}\", \"{star.Bio}\")";
             string sqlSelectLastInserted = "select last_insert_id()";
             int success = DBUtil.ExecuteCommand(sqlInsertStarData.ToString());
             if (success != 0)

@@ -6,8 +6,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Filmoteka.View"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d"
-        Title="AdminView" Height="450" Width="800">
+        mc:Ignorable="d"  WindowStartupLocation="CenterScreen"
+        Title="Dashboard" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -57,19 +57,19 @@
                     <Button Margin="10" Click="Movie_ListViewClick">
                         <Grid Width="150">
                             <materialDesign:PackIcon Kind="Movie"/>
-                            <TextBlock x:Name="moviesTextBlock" HorizontalAlignment="Center" Text="{DynamicResource movies}" FontFamily="Eras ITC"/>
+                            <TextBlock x:Name="moviesTextBlock" HorizontalAlignment="Center" Text="{DynamicResource movies}" />
                         </Grid>
                     </Button>
                     <Button Margin="10 5 10 10" Click="Movie_CastClick">
                         <Grid Width="150">
                             <materialDesign:PackIcon Kind="PeopleGroup"/>
-                            <TextBlock x:Name="castTextBlock" HorizontalAlignment="Center" Text="{DynamicResource cast}" FontFamily="Eras ITC"/>
+                            <TextBlock x:Name="castTextBlock" HorizontalAlignment="Center" Text="{DynamicResource cast}" />
                         </Grid>
                     </Button>
                     <Button Margin="10 5 10 10" Click="Movie_ProducersClick">
                         <Grid Width="150">
                             <materialDesign:PackIcon Kind="PeopleGroup"/>
-                            <TextBlock x:Name="producersTextBlock" HorizontalAlignment="Center" Text="{DynamicResource producers}" FontFamily="Eras ITC"/>
+                            <TextBlock x:Name="producersTextBlock" HorizontalAlignment="Center" Text="{DynamicResource producers}"/>
                         </Grid>
                     </Button>
                 </StackPanel>
@@ -78,7 +78,7 @@
                 <Button Margin="10 5 10 10" Click="Click_Logout">
                     <Grid Width="150">
                         <materialDesign:PackIcon Kind="Logout"/>
-                        <TextBlock x:Name="logoutTextBlock" HorizontalAlignment="Center" Text="{DynamicResource logout}" FontFamily="Eras ITC"/>
+                        <TextBlock x:Name="logoutTextBlock" HorizontalAlignment="Center" Text="{DynamicResource logout}" />
                     </Grid>
                 </Button>
             </StackPanel>

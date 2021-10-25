@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Filmoteka.View" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="UserMovieListView" WindowStartupLocation="CenterOwner" Height="450" Width="800">
+        Title="Movies"  WindowStartupLocation="CenterScreen"  Height="450" Width="800">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
@@ -19,14 +19,15 @@
         </Border>
         <StackPanel Orientation="Vertical">
             <DockPanel>
-                <Button Margin="5" DockPanel.Dock="Right" Click="Btn_Click_Logout">
+                <Button Margin="10 10 20 0" DockPanel.Dock="Right" Click="Btn_Click_Logout">
                     <Grid Width="80">
                         <materialDesign:PackIcon Kind="Logout"/>
                         <TextBlock HorizontalAlignment="Center" Text="{DynamicResource logout}"/>
                     </Grid>
                 </Button>
-                <TextBlock DockPanel.Dock="Right" Text="{DynamicResource movies}" Margin="80 10 10 0" FontSize="22" FontWeight="Medium" Foreground="{DynamicResource fontColor}" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="textBlockHello" VerticalAlignment="Center" Margin="20 0 " DockPanel.Dock="Left" Text="{DynamicResource hello}"  FontSize="22" FontWeight="Bold" Foreground="{DynamicResource fontColor}"/>
             </DockPanel>
+            <TextBlock DockPanel.Dock="Right" Text="{DynamicResource movies}" Margin="0 0 10 0" FontSize="22" FontWeight="Bold" Foreground="{DynamicResource fontColor}" HorizontalAlignment="Center"/>
             <StackPanel  Orientation="Horizontal" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center">
                 <TextBox x:Name="searchTextBox" materialDesign:HintAssist.Hint="{DynamicResource enterMovieHint}" Width="300"  BorderBrush="{DynamicResource fontColor}" CaretBrush="#FFD94448" SelectionBrush="#FFD94448" Foreground="{DynamicResource fontColor}" Margin="10"/>
                 <Button Click="Btn_Click_Filter">
@@ -35,7 +36,7 @@
                 <Button Content="{DynamicResource reset}" Click="Btn_Click_Reset" Margin="10 0 0 0"/>
             </StackPanel>
         </StackPanel>
-        <ScrollViewer MaxHeight="280" Margin="0 60 0 0">
+        <ScrollViewer MinHeight="240"  Margin="0,130,0,44">
             <StackPanel>
                 <StackPanel Margin="20 0">
                     <ItemsControl x:Name="ListViewMovies" DataContext="{Binding RelativeSource={RelativeSource Self}}">
@@ -48,7 +49,7 @@
                                                 <ImageBrush ImageSource="{Binding Image}" Stretch="UniformToFill"/>
                                             </Border.Background>
                                         </Border>
-                                        <TextBlock Margin="5" Text="{Binding Name, StringFormat={}{0:C}}" TextTrimming="CharacterEllipsis" MaxWidth="100" FontSize="16" Foreground="{DynamicResource fontColor}"></TextBlock>
+                                        <TextBlock FontWeight="Bold" Margin="5" Text="{Binding Name, StringFormat={}{0:C}}" TextTrimming="CharacterEllipsis" MaxWidth="100" FontSize="16" Foreground="{DynamicResource fontColor}"></TextBlock>
                                         <TextBlock Margin="5 0" Text="{Binding StarsString}" TextTrimming="CharacterEllipsis" MaxWidth="100" Foreground="{DynamicResource fontColor}" FontSize="13"/>
                                     </StackPanel>
                                 </Border>

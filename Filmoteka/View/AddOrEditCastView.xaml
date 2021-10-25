@@ -7,8 +7,8 @@
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
         xmlns:syncfusionskin ="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
         xmlns:local="clr-namespace:Filmoteka.View"
-        mc:Ignorable="d"
-        Title="AddACastView" Height="450" Width="800">
+        mc:Ignorable="d"  WindowStartupLocation="CenterScreen"
+        Title="Cast Input Window" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -30,7 +30,7 @@
         </Grid>
         <Grid Grid.Row="0" Grid.Column="0">
             <DockPanel x:Name="headingDockPanel" HorizontalAlignment="Center" VerticalAlignment="Center" LastChildFill="False">
-                <TextBlock Margin="10" VerticalAlignment="Center" x:Name="heading"  Text="{DynamicResource addACast}" Foreground="{DynamicResource fontColor}" FontSize="24"/>
+                <TextBlock FontWeight="Bold" Margin="10" VerticalAlignment="Center" x:Name="heading"  Text="{DynamicResource addACast}" Foreground="{DynamicResource fontColor}" FontSize="24"/>
             </DockPanel>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0">
@@ -57,7 +57,7 @@
                     </Grid>
                     <Grid Grid.Row="2">
                         <DockPanel VerticalAlignment="Center" HorizontalAlignment="Stretch" >
-                            <TextBox x:Name="txtFirstName" Margin="5" materialDesign:HintAssist.Hint="{DynamicResource firstName}" Foreground="{DynamicResource fontColor}" MinWidth="200" MaxWidth="300" BorderBrush="{DynamicResource fontColor}" CaretBrush="#FFD94448" SelectionBrush="#FFD94448"/>
+                            <TextBox x:Name="txtFirstName"  materialDesign:HintAssist.IsFloating="True" Margin="5" materialDesign:HintAssist.Hint="{DynamicResource firstName}" Foreground="{DynamicResource fontColor}" MinWidth="200" MaxWidth="300" BorderBrush="{DynamicResource fontColor}" CaretBrush="#FFD94448" SelectionBrush="#FFD94448"/>
                         </DockPanel>
                     </Grid>
                     <Grid Grid.Row="3" Grid.Column="0">

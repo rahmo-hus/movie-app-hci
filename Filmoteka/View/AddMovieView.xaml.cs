@@ -1,23 +1,13 @@
-﻿using Filmoteka.Model;
-using Filmoteka.DAO;
+﻿using Filmoteka.DAO;
+using Filmoteka.Model;
 using Microsoft.Win32;
-using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Filmoteka.Util;
 
 namespace Filmoteka.View
 {
@@ -111,6 +101,13 @@ namespace Filmoteka.View
         private void SaveMovie(object sender, RoutedEventArgs e)
         {
 
+            if(comboCastSelect.SelectedItems == null || comboCountrySelect.SelectedItems == null || comboGenreSelect.SelectedItems == null 
+                || comboLanguageSelect.SelectedItems == null || comboProducerSelect.SelectedItems == null || txtMovieName.Text.Equals(string.Empty) 
+                || txtMovieDescription.Text.Equals(string.Empty) || txtDuration.Text.Equals(string.Empty) || txtBudget.Text.Equals(string.Empty))
+            {
+                MessageBox.Show(FindResource("someFieldsBlank") as string, "Error", MessageBoxButton.OK);
+                return;
+            }  
 
             List<Star> stars = new();
             List<Genre> genres = new();
@@ -133,14 +130,20 @@ namespace Filmoteka.View
             if (SubmitMovie.Content.ToString().Contains(FindResource("update") as string))
             {
                 movie.ID = ID;
-                if (MovieDAO.Update(movie)!= null)
+                if (MovieDAO.Update(movie) != null)
+                {
                     MessageBox.Show(FindResource("updateSuccessful") as string, "Info", MessageBoxButton.OK);
+                    Close();
+                }
                 else MessageBox.Show(FindResource("updateFailed") as string, "Error", MessageBoxButton.OK);
             }
             else
             {
                 if (MovieDAO.Save(movie) != null)
+                {
                     MessageBox.Show(FindResource("movieSavedSuccessfully") as string, "Info", MessageBoxButton.OK);
+                    Close();
+                }
                 else MessageBox.Show(FindResource("couldNotSaveMovie") as string, "Error", MessageBoxButton.OK);
             }
         }

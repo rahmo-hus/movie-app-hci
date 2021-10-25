@@ -1,18 +1,10 @@
-﻿using Filmoteka.Model;
-using Filmoteka.DAO;
+﻿using Filmoteka.DAO;
+using Filmoteka.Model;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Filmoteka.View
 {
@@ -45,7 +37,7 @@ namespace Filmoteka.View
             textBlockLanguage.Text = textBlockLanguage.Text +": "+ movie.Language;
             textBlockStoryLine.Text = movie.Description;
             
-            if(movie.Ratings!= null)
+            if(movie.Ratings != null && movie.Ratings.Count != 0)
             {
                 ratingTextBlock.Text = movie.Ratings.Average(rating => rating.RatingScore) + "/5.0";
                 Model.Rating r = movie.Ratings.Find(rating => rating.UserId == CurrentUser.ID);
@@ -69,12 +61,12 @@ namespace Filmoteka.View
 
         private void CastClicked(object sender, MouseButtonEventArgs e)
         {
-
+            new UserPersonView((Star)(((StackPanel)sender).DataContext)).Show();
         }
 
         private void ProducerClicked(object sender, MouseButtonEventArgs e)
         {
-
+            new UserPersonView((Producer)(((StackPanel)sender).DataContext)).Show();
         }
 
         private void RatingClick(object sender, RoutedEventArgs e)

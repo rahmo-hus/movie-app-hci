@@ -1,16 +1,10 @@
-﻿using Filmoteka.DAO;
-using Filmoteka.Model;
+﻿using Filmoteka.Model;
 using Filmoteka.Util;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
 
 namespace Filmoteka.DAO
 {
@@ -64,6 +58,7 @@ namespace Filmoteka.DAO
                 localMovie.Image = ImageUtil.ConvertByteArrToBitmap(row.Field<byte[]>("Image"));
                 localMovie.OriginCountry = CountryDAO.GetCountryById(row.Field<int>("CountryId"));
                 localMovie.Language = LanguageDAO.GetLanguageById(row.Field<int>("LanguageId"));
+                localMovie.Budget = row.Field<float>("Budget");
                 localMovie.Producers = ProducerDAO.GetProducersByMovieId(localMovie.ID);
                 localMovie.Stars = StarDAO.GetCastByMovieId(localMovie.ID);
                 localMovie.Genres = GenreDAO.GetGenresByMovieId(localMovie.ID);
@@ -102,7 +97,7 @@ namespace Filmoteka.DAO
         public static Movie Update(Movie movie)
         {
             string sqlUpdateMovieData = "update mediacontent med inner join movie mov on mov.MovieId = med.ContentId set " +
-                "med.Name = '"+movie.Name+"', med.Description ='"+movie.Description+"', med.CountryId = "+movie.OriginCountry.ID+", " +
+                "med.Name = \""+movie.Name+"\", med.Description =\""+movie.Description+"\", med.CountryId = "+movie.OriginCountry.ID+", " +
                 "med.LanguageId = "+movie.Language.ID+", mov.Duration = "+movie.Duration+", med.Budget = "+movie.Budget +
                 " where mov.MovieId ="+movie.ID+";";
             //", med.Image = "+ConvertBitmapToByteArr(movie.Image)+"
@@ -159,7 +154,7 @@ namespace Filmoteka.DAO
             countryParam.Value = movie.OriginCountry.ID;
             languageParam.Value = movie.Language.ID;
             durationParam.Value = movie.Duration;
-            imageParam.Value = ImageUtil.ConvertBitmapToByteArr(movie.Image);
+            imageParam.Value = movie.Image!=null ? ImageUtil.ConvertBitmapToByteArr(movie.Image) : null;
 
             command.Parameters.Add(nameParam);
             command.Parameters.Add(descriptionParam);

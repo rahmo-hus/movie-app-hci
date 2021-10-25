@@ -5,9 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Filmoteka.DAO
 {
@@ -16,7 +13,7 @@ namespace Filmoteka.DAO
         #region Save 
         public static Producer Save(Producer producer)
         {
-            FormattableString sqlInsertProducerData = $"insert into person (FirstName, LastName, Gender, DateOfBirth, Bio) values ('{producer.FirstName}','{producer.LastName}', '{producer.Gender}', '{producer.DateOfBirth}', '{producer.Bio}')";
+            FormattableString sqlInsertProducerData = $"insert into person (FirstName, LastName, Gender, DateOfBirth, Bio) values (\"{producer.FirstName}\",\"{producer.LastName}\", \"{producer.Gender}\", \"{producer.DateOfBirth}\", \"{producer.Bio}\")";
             string sqlSelectLastInserted = "select last_insert_id()";
             int success = DBUtil.ExecuteCommand(sqlInsertProducerData.ToString());
             if (success != 0)
@@ -46,7 +43,7 @@ namespace Filmoteka.DAO
         #region Update
         public static bool Update(Producer producer)
         {
-            FormattableString sqlUpdateProducer = $"update person set FirstName='{producer.FirstName}', LastName='{producer.LastName}', Gender='{producer.Gender}', DateOfBirth='{producer.DateOfBirth}', Bio='{producer.Bio}' where PersonId = {producer.ID}";
+            FormattableString sqlUpdateProducer = $"update person set FirstName=\"{producer.FirstName}\", LastName=\"{producer.LastName}\", Gender=\"{producer.Gender}\", DateOfBirth=\"{producer.DateOfBirth}\", Bio=\"{producer.Bio}\" where PersonId = {producer.ID}";
             int success = DBUtil.ExecuteCommand(sqlUpdateProducer.ToString());
             if (success != 0 && producer.Image != null)
             {

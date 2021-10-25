@@ -18,6 +18,11 @@ namespace Filmoteka.Model
         public string Bio { get; set; }
         public string Nickname { get; set; }
         public BitmapImage Image { get; set; }
+        public string FullName { get
+            {
+                return FirstName + " " + LastName;
+            } 
+        }
 
         public Person(int iD, string firstName, string lastName, string gender, string dateOfBirth, string bio, BitmapImage image)
         {

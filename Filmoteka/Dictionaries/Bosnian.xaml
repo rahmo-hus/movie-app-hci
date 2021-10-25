@@ -6,6 +6,7 @@
     <system:String x:Key="enterUsernameHint">Unesi korisničko ime</system:String>
     <system:String x:Key="enterPasswordHint">Unesi lozinku</system:String>
     <system:String x:Key="loginButton">Prijavi se</system:String>
+    <system:String x:Key="invalidCredentials">Nevaljali kredencijali!</system:String>
 
     <system:String x:Key="movies">Filmovi</system:String>
     <system:String x:Key="logout">Odjava</system:String>
@@ -40,6 +41,7 @@
     <system:String x:Key="updateFailed">Neuspješno ažuriranje</system:String>
     <system:String x:Key="movieSavedSuccessfully">Uspješno dodan film</system:String>
     <system:String x:Key="couldNotSaveMovie">Nije moguće dodati film</system:String>
+    <system:String x:Key="someFieldsBlank">Sva polja je potrebno popuniti!</system:String>
 
     <system:String x:Key="firstName">Ime</system:String>
     <system:String x:Key="lastName">Prezime</system:String>
@@ -60,6 +62,7 @@
     <system:String x:Key="producerSavedSuccessfully">Uspješno dodan producent</system:String>
     <system:String x:Key="couldNotSaveProducer">Nije moguće dodati producenta</system:String>
     <system:String x:Key="addAProducer">Dodavanje producenta</system:String>
+    <system:String x:Key="producer">Producent</system:String>
 
     <system:String x:Key="settings">Postavke</system:String>
     <system:String x:Key="theme">Tema</system:String>
@@ -69,4 +72,6 @@
     <system:String x:Key="exitWithoutSaving">Zatvori bez spremanja</system:String>
 
     <system:String x:Key="movieRatedSuccessfully">Film je uspješno ocijenjen!</system:String>
+    <system:String x:Key="dateOfBirth">Datum rođenja</system:String>
+    <system:String x:Key="hello">Pozdrav</system:String>
 </ResourceDictionary>

@@ -59,10 +59,5 @@ namespace Filmoteka.Model
 
         }
 
-
-        //check Rating ID
-
-
-
     }
 }

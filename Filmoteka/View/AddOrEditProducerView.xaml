@@ -8,7 +8,7 @@
         xmlns:syncfusionskin ="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
         xmlns:local="clr-namespace:Filmoteka.View"
         mc:Ignorable="d"
-        Title="AddOrEditProducerView" Height="450" Width="800">
+        Title="Producer Input Window"  WindowStartupLocation="CenterScreen" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -30,7 +30,7 @@
         </Grid>
         <Grid Grid.Row="0" Grid.Column="0">
             <DockPanel x:Name="headingDockPanel" HorizontalAlignment="Center" VerticalAlignment="Center" LastChildFill="False">
-                <TextBlock Margin="10" VerticalAlignment="Center" x:Name="heading"  Text="{DynamicResource addAProducer}" Foreground="{DynamicResource fontColor}" FontSize="24"/>
+                <TextBlock FontWeight="Bold" Margin="10" VerticalAlignment="Center" x:Name="heading"  Text="{DynamicResource addAProducer}" Foreground="{DynamicResource fontColor}" FontSize="24"/>
             </DockPanel>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0">

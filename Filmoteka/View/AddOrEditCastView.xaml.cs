@@ -1,20 +1,12 @@
-﻿using Filmoteka.Model;
-using Filmoteka.DAO;
+﻿using Filmoteka.DAO;
+using Filmoteka.Model;
 using Microsoft.Win32;
 using Syncfusion.Windows.Tools.Controls;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Filmoteka.View
 {
@@ -97,6 +89,12 @@ namespace Filmoteka.View
 
         private void Bttn_Click_SaveCast(object sender, RoutedEventArgs e)
         {
+            if (txtFirstName.Text.Equals(string.Empty) || txtLastName.Text.Equals(string.Empty) || txtCastBio.Text.Equals(string.Empty)
+                || datePicker.Text.Equals(string.Empty) || comboGenderSelect.SelectedItems == null)
+            {
+                MessageBox.Show(FindResource("someFieldsBlank") as string, "Error", MessageBoxButton.OK);
+                return;
+            }
             Star star = new();
             star.FirstName = txtFirstName.Text;
             star.LastName = txtLastName.Text;

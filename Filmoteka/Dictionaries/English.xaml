@@ -6,6 +6,7 @@
     <system:String x:Key="enterUsernameHint">Enter username</system:String>
     <system:String x:Key="enterPasswordHint">Enter password</system:String>
     <system:String x:Key="loginButton">Login</system:String>
+    <system:String x:Key="invalidCredentials">Invalid credentials!</system:String>
 
     <system:String x:Key="movies">Movies</system:String>
     <system:String x:Key="logout">Logout</system:String>
@@ -28,7 +29,7 @@
     <system:String x:Key="budget">Budget</system:String>
     <system:String x:Key="genre">Genre</system:String>
     <system:String x:Key="cast">Cast</system:String>
-    <system:String x:Key="duration">Duration</system:String>
+    <system:String x:Key="duration">Duration (min)</system:String>
     <system:String x:Key="language">Language</system:String>
     <system:String x:Key="saveMovie">Save movie</system:String>
     <system:String x:Key="editAMovie">Edit a movie</system:String>
@@ -40,6 +41,7 @@
     <system:String x:Key="updateFailed">Update failed</system:String>
     <system:String x:Key="movieSavedSuccessfully">Movie saved successfully</system:String>
     <system:String x:Key="couldNotSaveMovie">Could not save a movie</system:String>
+    <system:String x:Key="someFieldsBlank">All fields are required!</system:String>
 
     <system:String x:Key="firstName">First name</system:String>
     <system:String x:Key="lastName">Last name</system:String>
@@ -60,6 +62,7 @@
     <system:String x:Key="producerSavedSuccessfully">Producer saved successfully</system:String>
     <system:String x:Key="couldNotSaveProducer">Could not save a producer</system:String>
     <system:String x:Key="addAProducer">Add a producer</system:String>
+    <system:String x:Key="producer">Producer</system:String>
 
     <system:String x:Key="settings">Settings</system:String>
     <system:String x:Key="theme">Theme</system:String>
@@ -69,5 +72,7 @@
     <system:String x:Key="exitWithoutSaving">Exit without saving</system:String>
 
     <system:String x:Key="movieRatedSuccessfully">Movie rated successfully</system:String>
+    <system:String x:Key="dateOfBirth">Date of birth</system:String>
+    <system:String x:Key="hello">Hello</system:String>
 
 </ResourceDictionary>

@@ -13,13 +13,13 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-            <Label Content="{DynamicResource addAProducer}" Foreground="{DynamicResource fontColor}" FontFamily="Bahnschrift Condensed" Margin="20 1 1 1" FontSize="16"/>
+            <Label Content="{DynamicResource addAProducer}" Foreground="{DynamicResource fontColor}"  Margin="20 1 1 1" FontSize="16"/>
             <Button Height="28" Width="28" Style="{StaticResource MaterialDesignFloatingActionButton}" Margin="1" Click="AddAProducer_Btn_Click"  BorderBrush="{x:Null}" Background="#FF5DC19D">
                 <materialDesign:PackIcon Kind="Add"/>
             </Button>
         </StackPanel>
         <StackPanel Grid.Row="1">
-            <TextBlock Text="{DynamicResource producers}" Margin="10" FontSize="22" FontWeight="Medium" Foreground="{DynamicResource fontColor}" HorizontalAlignment="Center"/>
+            <TextBlock Text="{DynamicResource producers}" Margin="10" FontSize="22" FontWeight="Bold" Foreground="{DynamicResource fontColor}" HorizontalAlignment="Center"/>
             <ScrollViewer MaxHeight="300">
                 <StackPanel>
                     <StackPanel Margin="20 0">
@@ -33,7 +33,7 @@
                                                     <ImageBrush ImageSource="{Binding Image}" Stretch="UniformToFill"/>
                                                 </Border.Background>
                                             </Border>
-                                            <TextBlock Margin="5" Text="{Binding FirstName, StringFormat={}{0:C}}" FontSize="16" Foreground="{DynamicResource fontColor}" FontFamily="Trebuchet MS"></TextBlock>
+                                            <TextBlock Margin="5" TextTrimming="CharacterEllipsis" MaxWidth="100" FontWeight="Bold" Text="{Binding FullName, StringFormat={}{0:C}}" FontSize="16" Foreground="{DynamicResource fontColor}" FontFamily="Trebuchet MS"></TextBlock>
                                             <!--<TextBlock Margin="5 0" Text="{Binding Stars}" Foreground="White" FontSize="13" FontFamily="Bodoni MT Poster Compressed"/>-->
                                         </StackPanel>
                                     </Border>

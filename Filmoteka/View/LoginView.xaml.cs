@@ -1,21 +1,7 @@
 ﻿using Filmoteka.DAO;
 using Filmoteka.Model;
-using Filmoteka.DAO;
-using Syncfusion.SfSkinManager;
-using Syncfusion.Themes.MaterialDarkBlue.WPF;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Filmoteka.View
 {
@@ -34,24 +20,28 @@ namespace Filmoteka.View
             DragMove();
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            if(txtUsername.Text != "" && txtPassword.Password != "")
+            if (txtUsername.Text != "" && txtPassword.Password != "")
             {
 
                 User user = UserDAO.Login(txtUsername.Text, txtPassword.Password);
-                if(user != null && user.Role == ERole.ADMIN)
+                if (user != null && user.Role == ERole.ADMIN)
                 {
                     new AdminView(user).Show();
                     Close();
                 }
-                else if(user != null && user.Role == ERole.VIEWER)
+                else if (user != null && user.Role == ERole.VIEWER)
                 {
                     new UserMovieListView(user).Show();
                     Close();
                 }
-
+                else
+                {
+                    MessageBox.Show(FindResource("invalidCredentials") as string, "Error", MessageBoxButton.OK);
+                }
             }
+            else MessageBox.Show(FindResource("someFieldsBlank") as string, "Error", MessageBoxButton.OK);
 
         }
 

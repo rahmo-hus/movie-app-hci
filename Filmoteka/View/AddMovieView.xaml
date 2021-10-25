@@ -7,8 +7,8 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:syncfusionskin ="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
         xmlns:local="clr-namespace:Filmoteka.View"
-        mc:Ignorable="d"
-        Title="AddMovieView" Height="450" Width="800">
+        mc:Ignorable="d"  WindowStartupLocation="CenterScreen"
+        Title="Add a movie" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="97*"/>
@@ -29,7 +29,7 @@
         </Grid>
         <Grid Grid.Row="0">
             <DockPanel x:Name="headingDockPanel" HorizontalAlignment="Center" VerticalAlignment="Center" LastChildFill="False">
-                <TextBlock Margin="10" VerticalAlignment="Center" x:Name="heading"  Text="{DynamicResource addAMovie}" Foreground="{DynamicResource fontColor}" FontSize="24"/>
+                <TextBlock FontWeight="Bold" Margin="10" VerticalAlignment="Center" x:Name="heading"  Text="{DynamicResource addAMovie}" Foreground="{DynamicResource fontColor}" FontSize="24"/>
             </DockPanel>
         </Grid>
         <Grid Grid.Row="1">
@@ -58,7 +58,7 @@
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
                             <TextBox x:Name="txtMovieName" materialDesign:HintAssist.IsFloating="True" Margin="10" materialDesign:HintAssist.Hint="{DynamicResource name}" materialDesign:HintAssist.Foreground="{DynamicResource fontColor}" Foreground="{DynamicResource fontColor}" Width="230" BorderBrush="{DynamicResource fontColor}" CaretBrush="#FFD94448" SelectionBrush="#FFD94448"/>
                             <Button x:Name="openFileDialog" Click="Btn_OpenFileDialog" Margin="10" Content="{DynamicResource selectImage}" Width="230" />
-                            <syncfusion:ComboBoxAdv   syncfusionskin:SfSkinManager.Theme="{DynamicResource comboBoxTheme}" Foreground="{DynamicResource fontColor}"  x:Name="comboCountrySelect" DefaultText="{DynamicResource country}" IsHitTestVisible="True" Width="230" Margin="10" BorderBrush="{DynamicResource fontColor}" AllowMultiSelect="False">
+                            <syncfusion:ComboBoxAdv MaxDropDownHeight="100"  syncfusionskin:SfSkinManager.Theme="{DynamicResource comboBoxTheme}" Foreground="{DynamicResource fontColor}"  x:Name="comboCountrySelect" DefaultText="{DynamicResource country}" IsHitTestVisible="True" Width="230" Margin="10" BorderBrush="{DynamicResource fontColor}" AllowMultiSelect="False">
                             </syncfusion:ComboBoxAdv>
 
                         </StackPanel>
@@ -76,20 +76,20 @@
                         Width="230" BorderBrush="White" Margin="10">
 
                         </ComboBox>-->
-                        <syncfusion:ComboBoxAdv  syncfusionskin:SfSkinManager.Theme="{DynamicResource comboBoxTheme}"  x:Name="comboCastSelect" DefaultText="{DynamicResource cast}" Width="230" Margin="10" BorderBrush="{DynamicResource fontColor}" AllowMultiSelect="True">
+                        <syncfusion:ComboBoxAdv MaxDropDownHeight="100" syncfusionskin:SfSkinManager.Theme="{DynamicResource comboBoxTheme}"  x:Name="comboCastSelect" DefaultText="{DynamicResource cast}" Width="230" Margin="10" BorderBrush="{DynamicResource fontColor}" AllowMultiSelect="True">
                         </syncfusion:ComboBoxAdv>
 
                     </StackPanel>
                     <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
                         <TextBox materialDesign:HintAssist.Hint="{DynamicResource duration}" x:Name="txtDuration"  materialDesign:HintAssist.IsFloating="True" TextWrapping="Wrap" Width="230" Margin="10" Foreground="{DynamicResource fontColor}" BorderBrush="{DynamicResource fontColor}"/>
-                        <syncfusion:ComboBoxAdv  syncfusionskin:SfSkinManager.Theme="{DynamicResource comboBoxTheme}"  x:Name="comboProducerSelect" DefaultText="{DynamicResource producers}" Width="230" Margin="10" BorderBrush="{DynamicResource fontColor}" AllowMultiSelect="True"></syncfusion:ComboBoxAdv>
+                        <syncfusion:ComboBoxAdv MaxDropDownHeight="100" syncfusionskin:SfSkinManager.Theme="{DynamicResource comboBoxTheme}"  x:Name="comboProducerSelect" DefaultText="{DynamicResource producers}" Width="230" Margin="10" BorderBrush="{DynamicResource fontColor}" AllowMultiSelect="True"></syncfusion:ComboBoxAdv>
                         <!--<syncfusion:ComboBoxAdv syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=MaterialDarkBlue}" materialDesign:ThemeAssist.Theme="Dark"  x:Name="comboDirectorSelect" DefaultText="Directors" Width="230" Margin="10" BorderBrush="White" AllowMultiSelect="True">-->
-                        <syncfusion:ComboBoxAdv  syncfusionskin:SfSkinManager.Theme="{DynamicResource comboBoxTheme}" x:Name="comboLanguageSelect" DefaultText="{DynamicResource language}" Width="230" Margin="10" BorderBrush="{DynamicResource fontColor}" AllowMultiSelect="False">
+                        <syncfusion:ComboBoxAdv MaxDropDownHeight="100" syncfusionskin:SfSkinManager.Theme="{DynamicResource comboBoxTheme}" x:Name="comboLanguageSelect" DefaultText="{DynamicResource language}" Width="230" Margin="10" BorderBrush="{DynamicResource fontColor}" AllowMultiSelect="False">
                         </syncfusion:ComboBoxAdv>
 
                     </StackPanel>
                     <StackPanel Grid.Row="5" x:Name="buttonPanel" Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
-                        <Button x:Name="SubmitMovie" Width="120" Content="{DynamicResource saveMovie}" Foreground="{DynamicResource fontColor}" Click="SaveMovie"/>
+                        <Button x:Name="SubmitMovie" Width="120" Content="{DynamicResource saveMovie}" Click="SaveMovie"/>
                     </StackPanel>
                 </Grid>
             </ScrollViewer>
