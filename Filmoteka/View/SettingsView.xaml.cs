@@ -1,5 +1,6 @@
 ﻿using Syncfusion.Windows.Tools.Controls;
 using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Input;
 
@@ -10,6 +11,7 @@ namespace Filmoteka.View
     /// </summary>
     public partial class SettingsView : Window
     {
+        public static readonly string Path = "settings.txt";
         public static ResourceDictionary ThemeDictionary
         {
             get { return Application.Current.Resources.MergedDictionaries[4]; }
@@ -67,20 +69,24 @@ namespace Filmoteka.View
         {
             string selectedTheme = ((ComboBoxItemAdv)comboThemeSelect.SelectedItem).Content.ToString();
             string selectedLanguage = ((ComboBoxItemAdv)comboLanguageSelect.SelectedItem).Content.ToString();
+            ApplySettings(selectedTheme, selectedLanguage);
+            new LoginView().Show();
+            Close();
+        }
+
+        public static void ApplySettings(string selectedTheme, string selectedLanguage)
+        {
             ThemeDictionary.MergedDictionaries.Clear();
             LanguageDictionary.MergedDictionaries.Clear();
             ThemeDictionary.MergedDictionaries.Add(new ResourceDictionary
             {
-                Source = new Uri("pack://application:,,,/Filmoteka;component/Dictionaries/" +( selectedTheme.Equals("Dark theme") || selectedTheme.Equals("Tamna tema") ? "ThemeDark.xaml" : "ThemeLight.xaml"))
+                Source = new Uri("pack://application:,,,/Filmoteka;component/Dictionaries/" + (selectedTheme.Equals("Dark theme") || selectedTheme.Equals("Tamna tema") ? "ThemeDark.xaml" : "ThemeLight.xaml"))
             });
             LanguageDictionary.MergedDictionaries.Add(new ResourceDictionary
             {
                 Source = new Uri("pack://application:,,,/Filmoteka;component/Dictionaries/" + (selectedLanguage.Equals("English") ? "English.xaml" : "Bosnian.xaml"))
             });
-            new LoginView().Show();
-            Close();
         }
-
         private void Click_Exit(object sender, RoutedEventArgs e)
         {
             new LoginView().Show();

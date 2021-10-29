@@ -107,13 +107,19 @@ namespace Filmoteka.View
             {
                 star.ID = ID;
                 if (StarDAO.Update(star))
+                {
                     MessageBox.Show(FindResource("updateSuccessful") as string, "Info", MessageBoxButton.OK);
+                    Close();
+                }
                 else MessageBox.Show(FindResource("updateFailed") as string, "Error", MessageBoxButton.OK);
             }
             else
             {
                 if (StarDAO.Save(star) != null)
+                {
                     MessageBox.Show(FindResource("castSavedSuccessfully") as string, "Info", MessageBoxButton.OK);
+                    Close();
+                }
                 else MessageBox.Show(FindResource("couldNotSaveCast") as string, "Error", MessageBoxButton.OK);
             }
         }

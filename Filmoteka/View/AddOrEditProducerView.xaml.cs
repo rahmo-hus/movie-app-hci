@@ -96,13 +96,19 @@ namespace Filmoteka.View
             {
                 producer.ID = ID;
                 if (ProducerDAO.Update(producer))
+                {
                     MessageBox.Show(FindResource("updateSuccessful") as string, "Info", MessageBoxButton.OK);
+                    Close();
+                }
                 else MessageBox.Show(FindResource("updateFailed") as string, "Error", MessageBoxButton.OK);
             }
             else
             {
                 if (ProducerDAO.Save(producer) != null)
+                {
                     MessageBox.Show(FindResource("producerSavedSuccessfully") as string, "Info", MessageBoxButton.OK);
+                    Close();
+                }
                 else MessageBox.Show(FindResource("couldNotSaveProducer") as string, "Error", MessageBoxButton.OK);
             }
         }

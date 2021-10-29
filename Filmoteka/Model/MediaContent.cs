@@ -39,7 +39,7 @@ namespace Filmoteka.Model
             {
                 string list = string.Empty;
                 Stars.ForEach(star => list += star + ",");
-                return list[0..^1];
+                return list.Length>0 ? list[0..^1] : list;
             } 
         }
         public MediaContent(string name, string description, Language language, Country originCountry, float budget, List<Genre> genres, List<Star> stars, List<Producer> producers)

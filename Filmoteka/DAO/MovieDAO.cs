@@ -106,8 +106,8 @@ namespace Filmoteka.DAO
                 "delete from starmediacontent smc where smc.ContentId =" + movie.ID + ";" +
                 "delete from genremediacontent gmc where gmc.ContentId =" + movie.ID + ";";
 
-            string updateProducers = "insert into producermediacontent values("+movie.ID+",?); ";
-            string updateStars = "insert into starmediacontent values(" + movie.ID + ",?); ";
+            string updateProducers = "insert into producermediacontent (ContentId, ProducerId) values("+movie.ID+",?); ";
+            string updateStars = "insert into starmediacontent (ContentId, StarId) values(" + movie.ID + ",?); ";
             string updateGenres ="insert into genremediacontent(ContentId, GenreId) values("+movie.ID+",?); ";
 
 
